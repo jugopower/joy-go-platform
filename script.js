@@ -136,3 +136,17 @@ document.getElementById("lineButton").addEventListener("click",async e=>{
   try{await navigator.clipboard.writeText(t);alert("洽詢文字已複製，請開啟 LINE 貼上傳送。");}
   catch(err){alert(t);}
 });
+
+
+// Build 006.1: robust mobile menu close behavior
+(() => {
+  const menuButton = document.querySelector('.menu-button');
+  const nav = document.querySelector('.site-nav');
+  if (!menuButton || !nav) return;
+  const closeMenu = () => {nav.classList.remove('is-open');document.body.classList.remove('menu-open');menuButton.setAttribute('aria-expanded','false');};
+  const openMenu = () => {nav.classList.add('is-open');document.body.classList.add('menu-open');menuButton.setAttribute('aria-expanded','true');};
+  menuButton.addEventListener('click',(event)=>{event.stopPropagation();nav.classList.contains('is-open')?closeMenu():openMenu();},true);
+  nav.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeMenu));
+  document.addEventListener('click',(event)=>{if(!nav.contains(event.target)&&!menuButton.contains(event.target))closeMenu();});
+  window.addEventListener('resize',()=>{if(window.innerWidth>920)closeMenu();});
+})();

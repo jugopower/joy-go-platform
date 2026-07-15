@@ -240,3 +240,26 @@ footer{background:#09160f;color:white;padding:55px 0 25px}
 .share-float button{background:white;color:var(--forest);border:1px solid var(--line)}
 @media(max-width:920px){.testimonial-grid{grid-template-columns:1fr}}
 @media(max-width:620px){.course-filter{overflow:auto;flex-wrap:nowrap}.course-filter button{white-space:nowrap}.share-float{display:none}}
+
+
+/* Build 006.1 mobile overlap fix */
+@media (max-width: 920px) {
+  .site-nav {position:fixed!important;top:72px!important;left:0!important;right:0!important;z-index:90!important;display:none!important;flex-direction:column!important;align-items:stretch!important;gap:0!important;padding:14px 18px 22px!important;background:rgba(250,249,245,.98)!important;border-bottom:1px solid var(--line)!important;box-shadow:0 18px 35px rgba(0,0,0,.12)!important;max-height:calc(100vh - 72px)!important;overflow-y:auto!important}
+  .site-nav.is-open{display:flex!important}
+  .site-nav a{display:block!important;position:static!important;width:100%!important;padding:14px 6px!important;margin:0!important;border-bottom:1px solid var(--line)!important;color:var(--ink)!important;background:transparent!important}
+  .site-nav .button,.site-nav a.button{margin-top:12px!important;text-align:center!important;border-bottom:0!important}
+  body.menu-open{overflow:hidden!important}
+  .register-grid,.contact-grid,.form-grid{display:grid!important;grid-template-columns:1fr!important;gap:18px!important}
+  .register-card,.register-form,.contact-card,form{position:relative!important;z-index:1!important}
+  .register-form label,.register-form input,.register-form select,.register-form textarea{position:static!important}
+  .section-heading,.section-heading>div,.section-heading h2,.section-heading p{position:static!important}
+}
+@media (max-width: 620px) {
+  .site-header{min-height:72px!important}
+  .menu-button{position:relative!important;z-index:95!important}
+  .register-section{padding-top:56px!important}
+  .register-form{padding:22px!important}
+  .register-form label{display:block!important;margin-bottom:16px!important}
+  .register-form input,.register-form select,.register-form textarea{width:100%!important;min-width:0!important;box-sizing:border-box!important}
+  .share-float{display:none!important}
+}
