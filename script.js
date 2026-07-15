@@ -1,20 +1,3 @@
-const menuButton = document.querySelector(".menu-button");
-const nav = document.querySelector(".main-nav");
-
-menuButton.addEventListener("click", () => {
-  const open = nav.classList.toggle("open");
-  document.body.classList.toggle("menu-open", open);
-  menuButton.setAttribute("aria-expanded", String(open));
-});
-
-document.querySelectorAll(".main-nav a").forEach(link => {
-  link.addEventListener("click", () => {
-    nav.classList.remove("open");
-    document.body.classList.remove("menu-open");
-    menuButton.setAttribute("aria-expanded", "false");
-  });
-});
-
 document.getElementById("year").textContent = new Date().getFullYear();
 
 const tips = [
@@ -138,58 +121,53 @@ document.getElementById("lineButton").addEventListener("click",async e=>{
 });
 
 
-// Build 006.1: robust mobile menu close behavior
-(() => {
-  const menuButton = document.querySelector('.menu-button');
-  const nav = document.querySelector('.site-nav');
-  if (!menuButton || !nav) return;
-  const closeMenu = () => {nav.classList.remove('is-open');document.body.classList.remove('menu-open');menuButton.setAttribute('aria-expanded','false');};
-  const openMenu = () => {nav.classList.add('is-open');document.body.classList.add('menu-open');menuButton.setAttribute('aria-expanded','true');};
-  menuButton.addEventListener('click',(event)=>{event.stopPropagation();nav.classList.contains('is-open')?closeMenu():openMenu();},true);
-  nav.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeMenu));
-  document.addEventListener('click',(event)=>{if(!nav.contains(event.target)&&!menuButton.contains(event.target))closeMenu();});
-  window.addEventListener('resize',()=>{if(window.innerWidth>920)closeMenu();});
-})();
-
-
-// Build 007: header shadow, stable mobile navigation, back-to-top
+// Build 007.1: single stable navigation controller
 (() => {
   const header = document.querySelector(".site-header");
   const menuButton = document.querySelector(".menu-button");
-  const nav = document.querySelector(".site-nav");
+  const nav = document.querySelector(".main-nav");
+  const backdrop = document.getElementById("menuBackdrop");
   const backToTop = document.getElementById("backToTop");
 
+  if (!menuButton || !nav) return;
+
+  const isOpen = () => nav.classList.contains("open");
+
   const closeMenu = () => {
-    if (!nav || !menuButton) return;
-    nav.classList.remove("is-open");
+    nav.classList.remove("open");
     document.body.classList.remove("menu-open");
     menuButton.setAttribute("aria-expanded", "false");
     menuButton.setAttribute("aria-label", "開啟主選單");
+    if (backdrop) backdrop.hidden = true;
   };
 
   const openMenu = () => {
-    if (!nav || !menuButton) return;
-    nav.classList.add("is-open");
+    nav.classList.add("open");
     document.body.classList.add("menu-open");
     menuButton.setAttribute("aria-expanded", "true");
     menuButton.setAttribute("aria-label", "關閉主選單");
+    if (backdrop) backdrop.hidden = false;
   };
 
-  if (menuButton && nav) {
-    menuButton.addEventListener("click", event => {
-      event.preventDefault();
-      event.stopPropagation();
-      nav.classList.contains("is-open") ? closeMenu() : openMenu();
-    }, true);
+  menuButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    isOpen() ? closeMenu() : openMenu();
+  });
 
-    nav.querySelectorAll("a").forEach(link => link.addEventListener("click", closeMenu));
-    document.addEventListener("click", event => {
-      if (!nav.contains(event.target) && !menuButton.contains(event.target)) closeMenu();
-    });
-    window.addEventListener("resize", () => {
-      if (window.innerWidth > 920) closeMenu();
-    });
-  }
+  nav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  if (backdrop) backdrop.addEventListener("click", closeMenu);
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && isOpen()) closeMenu();
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 920) closeMenu();
+  });
 
   const updateScrollUI = () => {
     const y = window.scrollY;
@@ -201,6 +179,9 @@ document.getElementById("lineButton").addEventListener("click",async e=>{
   updateScrollUI();
 
   if (backToTop) {
-    backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+    backToTop.addEventListener("click", () => {
+      closeMenu();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
   }
 })();

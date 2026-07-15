@@ -1,29 +1,24 @@
-# Joy Go Platform Build 007 Professional Edition
+# Joy Go Platform Build 007.1
 
-## 主要升級
-- iPad 橫式保留雙欄報名版面
-- iPad／iPhone 直式改為單欄，不再重疊
-- 手機導覽列改為固定下拉面板
-- 點擊選單項目或空白處後自動收起
-- 新增 30+ 年教學、AI 觀念、1 對 1 診斷三項特色
-- 卡片互動與陰影質感升級
-- 表單焦點提示與隱私說明
-- 新增回到頁首按鈕
-- 全站版本更新為 Build 007
+## 本次修正
+- 修正點擊三條線後選單與頁面內容重疊
+- 移除重複的選單 JavaScript，僅保留一套控制程式
+- 選單改為不透明的固定下拉面板
+- 選單提高至頁面最上層，不會被卡片或文字穿透
+- 新增半透明背景遮罩
+- 點選連結、遮罩或按 Esc 都會關閉選單
+- 選單開啟時停止背景捲動
+- iPad 與手機版隱藏浮動按鈕，避免遮住內容
+- 版本更新為 Build 007.1
 
-## 上傳方式
-解壓縮後，將以下檔案上傳到 GitHub joy-go-platform 並覆蓋舊檔：
+## 更新方式
+解壓縮後，上傳並覆蓋：
 - index.html
 - styles.css
 - script.js
 - README.md
 - render.yaml
+- .nojekyll
 
 按 Commit changes 後，到 Render：
 Manual Deploy → Deploy latest commit
-
-## 照片
-可放在 Repository 根目錄：
-- teacher.jpg
-- news1.jpg、news2.jpg、news3.jpg
-- gallery1.jpg、gallery2.jpg、gallery3.jpg、gallery4.jpg
