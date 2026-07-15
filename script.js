@@ -244,3 +244,24 @@ document.getElementById("lineButton").addEventListener("click",async e=>{
     }, { once: true });
   }
 })();
+
+
+// Build 008.1: Safari visibility safety
+(() => {
+  const showEverything = () => {
+    document.querySelectorAll(".reveal").forEach((el) => {
+      el.classList.add("is-visible");
+      el.style.opacity = "1";
+      el.style.visibility = "visible";
+      el.style.transform = "none";
+    });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", showEverything, { once: true });
+  } else {
+    showEverything();
+  }
+
+  window.addEventListener("pageshow", showEverything);
+})();
