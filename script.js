@@ -193,3 +193,36 @@ document.getElementById("lineButton").addEventListener("click",async e=>{
     });
   }
 })();
+
+
+// Build 007.3: highlight the current drawer section
+(() => {
+  const links = Array.from(document.querySelectorAll(".drawer-nav a[data-section]"));
+  const sections = links
+    .map(link => document.getElementById(link.dataset.section))
+    .filter(Boolean);
+
+  if (!links.length || !sections.length) return;
+
+  const setActive = (id) => {
+    links.forEach(link => {
+      link.classList.toggle("is-active", link.dataset.section === id);
+    });
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    const visible = entries
+      .filter(entry => entry.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+    if (visible[0]) setActive(visible[0].target.id);
+  }, {
+    rootMargin: "-22% 0px -62% 0px",
+    threshold: [0.05, 0.2, 0.5]
+  });
+
+  sections.forEach(section => observer.observe(section));
+
+  const hashId = location.hash.replace("#", "");
+  if (hashId) setActive(hashId);
+})();
