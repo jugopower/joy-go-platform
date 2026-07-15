@@ -1146,3 +1146,28 @@ body{overflow-x:hidden}
     width:100%!important;
   }
 }
+
+
+/* ===== Build 008.2 interaction fixes ===== */
+.course-card.is-hidden,
+.course-card[hidden]{
+  display:none!important;
+}
+.course-filter button{
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+}
+.course-filter button.active{
+  background:var(--forest)!important;
+  color:#fff!important;
+  border-color:var(--forest)!important;
+}
+.filter-status{
+  margin:12px 0 22px;
+  color:var(--muted);
+  font-size:14px;
+}
+.menu-button{
+  cursor:pointer;
+  touch-action:manipulation;
+}

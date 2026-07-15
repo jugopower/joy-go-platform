@@ -1,42 +1,154 @@
-document.getElementById("year").textContent = new Date().getFullYear();
+// Joy Go Platform Build 008.2 — guarded interactive controls
+(() => {
+  "use strict";
 
-const tips = [
-  "攻擊的目的，不一定是殺棋，而是取得利益。",
-  "厚勢不是用來圍地，而是用來攻擊。",
-  "先處理弱棋，再考慮進攻對手。",
-  "領先時選擇簡明，落後時尋找變化。",
-  "落子前先問：這一手的目的到底是什麼？",
-  "局部便宜，不一定等於全局有利。",
-  "能輕靈處理，就不要把棋走重。"
-];
-const today = new Date();
-const index = (today.getFullYear() + today.getMonth() + today.getDate()) % tips.length;
-document.getElementById("dailyTip").textContent = tips[index];
+  const byId = (id) => document.getElementById(id);
+  const all = (selector, root = document) => Array.from(root.querySelectorAll(selector));
 
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-      revealObserver.unobserve(entry.target);
+  const safely = (fn) => {
+    try {
+      fn();
+    } catch (error) {
+      console.error("Joy Go interaction error:", error);
     }
-  });
-}, { threshold: 0.13 });
+  };
 
-document.querySelectorAll(".reveal").forEach(element => revealObserver.observe(element));
+  // Footer year
+  const year = byId("year");
+  if (year) year.textContent = new Date().getFullYear();
 
-const form = document.getElementById("registerForm");
-const resultBox = document.getElementById("resultBox");
-const resultText = document.getElementById("resultText");
-const status = document.getElementById("formStatus");
-const copyAgain = document.getElementById("copyAgain");
-const smsLink = document.getElementById("smsLink");
-let generatedText = "";
+  // Daily Go tip: optional because Build 008 hero may not contain this element.
+  const dailyTip = byId("dailyTip");
+  if (dailyTip) {
+    const tips = [
+      "攻擊的目的，不一定是殺棋，而是取得利益。",
+      "厚勢不是用來圍地，而是用來攻擊。",
+      "先處理弱棋，再考慮進攻對手。",
+      "領先時選擇簡明，落後時尋找變化。",
+      "落子前先問：這一手的目的到底是什麼？",
+      "局部便宜，不一定等於全局有利。",
+      "能輕靈處理，就不要把棋走重。"
+    ];
+    const today = new Date();
+    const tipIndex = (today.getFullYear() + today.getMonth() + today.getDate()) % tips.length;
+    dailyTip.textContent = tips[tipIndex];
+  }
 
-async function copyText(text) {
-  try {
-    await navigator.clipboard.writeText(text);
-    return true;
-  } catch {
+  // Critical visibility safety for Safari.
+  const showEverything = () => {
+    all(".reveal").forEach((element) => {
+      element.classList.add("visible", "is-visible");
+      element.style.opacity = "1";
+      element.style.visibility = "visible";
+      element.style.transform = "none";
+    });
+  };
+  showEverything();
+  window.addEventListener("pageshow", showEverything);
+
+  // Independent iPad/mobile drawer.
+  const header = document.querySelector(".site-header");
+  const menuButton = document.querySelector(".menu-button");
+  const drawer = byId("mobileDrawer");
+  const backdrop = byId("drawerBackdrop");
+  const drawerClose = byId("drawerClose");
+  const backToTop = byId("backToTop");
+
+  const drawerAvailable = menuButton && drawer && backdrop && drawerClose;
+  const drawerIsOpen = () => Boolean(drawer && drawer.classList.contains("is-open"));
+
+  const closeDrawer = () => {
+    if (!drawerAvailable) return;
+    drawer.classList.remove("is-open");
+    drawer.setAttribute("aria-hidden", "true");
+    backdrop.classList.remove("is-visible");
+    document.body.classList.remove("drawer-open");
+    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.setAttribute("aria-label", "開啟主選單");
+    window.setTimeout(() => {
+      if (!drawerIsOpen()) backdrop.hidden = true;
+    }, 280);
+  };
+
+  const openDrawer = () => {
+    if (!drawerAvailable) return;
+    drawer.classList.add("is-open");
+    drawer.setAttribute("aria-hidden", "false");
+    backdrop.hidden = false;
+    requestAnimationFrame(() => backdrop.classList.add("is-visible"));
+    document.body.classList.add("drawer-open");
+    menuButton.setAttribute("aria-expanded", "true");
+    menuButton.setAttribute("aria-label", "關閉主選單");
+  };
+
+  if (drawerAvailable) {
+    menuButton.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      drawerIsOpen() ? closeDrawer() : openDrawer();
+    });
+
+    drawerClose.addEventListener("click", closeDrawer);
+    backdrop.addEventListener("click", closeDrawer);
+    all("a", drawer).forEach((link) => link.addEventListener("click", closeDrawer));
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && drawerIsOpen()) closeDrawer();
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 920 && drawerIsOpen()) closeDrawer();
+    });
+  }
+
+  // Course filters.
+  const filterButtons = all(".course-filter button[data-filter]");
+  const courseCards = all(".course-card[data-category]");
+  const filterStatus = byId("courseFilterStatus");
+
+  if (filterButtons.length && courseCards.length) {
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const filter = button.dataset.filter || "all";
+
+        filterButtons.forEach((item) => {
+          const selected = item === button;
+          item.classList.toggle("active", selected);
+          item.setAttribute("aria-pressed", String(selected));
+        });
+
+        let visibleCount = 0;
+        courseCards.forEach((card) => {
+          const show = filter === "all" || card.dataset.category === filter;
+          card.classList.toggle("is-hidden", !show);
+          card.hidden = !show;
+          if (show) visibleCount += 1;
+        });
+
+        if (filterStatus) {
+          const label = button.textContent.trim();
+          filterStatus.textContent = `目前顯示「${label}」共 ${visibleCount} 項課程`;
+        }
+      });
+    });
+  }
+
+  // Registration form.
+  const form = byId("registerForm");
+  const resultBox = byId("resultBox");
+  const resultText = byId("resultText");
+  const formStatus = byId("formStatus");
+  const copyAgain = byId("copyAgain");
+  const smsLink = byId("smsLink");
+  let generatedText = "";
+
+  const copyText = async (text) => {
+    if (navigator.clipboard && window.isSecureContext) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch {}
+    }
     const field = document.createElement("textarea");
     field.value = text;
     field.style.position = "fixed";
@@ -46,25 +158,25 @@ async function copyText(text) {
     const success = document.execCommand("copy");
     field.remove();
     return success;
-  }
-}
+  };
 
-form.addEventListener("submit", async event => {
-  event.preventDefault();
+  if (form) {
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
 
-  const name = document.getElementById("name").value.trim();
-  const phone = document.getElementById("phone").value.trim();
-  const lineName = document.getElementById("lineName").value.trim();
-  const level = document.getElementById("level").value;
-  const course = document.getElementById("course").value;
-  const message = document.getElementById("message").value.trim();
+      const name = byId("name")?.value.trim() || "";
+      const phone = byId("phone")?.value.trim() || "";
+      const lineName = byId("lineName")?.value.trim() || "";
+      const level = byId("level")?.value || "";
+      const course = byId("course")?.value || "";
+      const message = byId("message")?.value.trim() || "";
 
-  if (!name || !phone || !level || !course) {
-    status.textContent = "請先填寫姓名、電話、棋力與課程需求。";
-    return;
-  }
+      if (!name || !phone || !level || !course) {
+        if (formStatus) formStatus.textContent = "請先填寫姓名、電話、棋力與課程需求。";
+        return;
+      }
 
-  generatedText = `朱老師您好，我想洽詢圍棋課程。
+      generatedText = `朱老師您好，我想洽詢圍棋課程。
 
 姓名：${name}
 電話：${phone}
@@ -75,114 +187,119 @@ LINE 顯示名稱：${lineName || "未填"}
 
 謝謝。`;
 
-  const copied = await copyText(generatedText);
-  resultText.textContent = generatedText;
-  resultBox.hidden = false;
-  status.textContent = copied
-    ? "報名內容已複製，可直接貼到 LINE 或簡訊傳送。"
-    : "已產生報名內容，請長按內容手動複製。";
-
-  const encoded = encodeURIComponent(generatedText);
-  smsLink.href = `sms:0931399910?body=${encoded}`;
-  resultBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
-});
-
-copyAgain.addEventListener("click", async () => {
-  const copied = await copyText(generatedText);
-  status.textContent = copied ? "已再次複製。" : "請長按報名內容手動複製。";
-});
-
-document.querySelectorAll(".course-filter button").forEach(button=>{
-  button.addEventListener("click",()=>{
-    document.querySelectorAll(".course-filter button").forEach(x=>x.classList.remove("active"));
-    button.classList.add("active");
-    const f=button.dataset.filter;
-    document.querySelectorAll(".course-card").forEach(card=>{
-      card.classList.toggle("is-hidden",f!=="all"&&card.dataset.category!==f);
+      const copied = await copyText(generatedText);
+      if (resultText) resultText.textContent = generatedText;
+      if (resultBox) {
+        resultBox.hidden = false;
+        resultBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+      if (formStatus) {
+        formStatus.textContent = copied
+          ? "報名內容已複製，可直接貼到 LINE 或簡訊傳送。"
+          : "已產生報名內容，請長按內容手動複製。";
+      }
+      if (smsLink) smsLink.href = `sms:0931399910?body=${encodeURIComponent(generatedText)}`;
     });
-  });
-});
-const lb=document.getElementById("galleryLightbox"),lbImg=document.getElementById("lightboxImage"),lbTitle=document.getElementById("lightboxTitle");
-document.querySelectorAll(".gallery-item[data-image]").forEach(item=>item.addEventListener("click",()=>{
-  lbImg.src=item.dataset.image;lbImg.alt=item.dataset.title;lbTitle.textContent=item.dataset.title;lb.hidden=false;document.body.style.overflow="hidden";
-}));
-function closeLB(){lb.hidden=true;lbImg.removeAttribute("src");document.body.style.overflow="";}
-document.getElementById("lightboxClose").addEventListener("click",closeLB);
-lb.addEventListener("click",e=>{if(e.target===lb)closeLB();});
-document.getElementById("shareSite").addEventListener("click",async()=>{
-  const data={title:document.title,text:"朱老師 AI 圍棋教學平台",url:location.href};
-  if(navigator.share){try{await navigator.share(data);}catch(e){}}
-  else{await navigator.clipboard.writeText(location.href);alert("網址已複製。");}
-});
-document.getElementById("lineButton").addEventListener("click",async e=>{
-  e.preventDefault();const t="朱老師您好，我想洽詢圍棋課程。";
-  try{await navigator.clipboard.writeText(t);alert("洽詢文字已複製，請開啟 LINE 貼上傳送。");}
-  catch(err){alert(t);}
-});
 
+    form.addEventListener("input", () => form.classList.add("form-active"), { once: true });
+  }
 
-// Build 007.2: independent iPad / mobile drawer
-(() => {
-  const header = document.querySelector(".site-header");
-  const menuButton = document.querySelector(".menu-button");
-  const drawer = document.getElementById("mobileDrawer");
-  const backdrop = document.getElementById("drawerBackdrop");
-  const closeButton = document.getElementById("drawerClose");
-  const backToTop = document.getElementById("backToTop");
+  if (copyAgain) {
+    copyAgain.addEventListener("click", async () => {
+      const copied = await copyText(generatedText);
+      if (formStatus) formStatus.textContent = copied ? "已再次複製。" : "請長按報名內容手動複製。";
+    });
+  }
 
-  if (!menuButton || !drawer || !backdrop || !closeButton) return;
+  // Gallery lightbox.
+  const lightbox = byId("galleryLightbox");
+  const lightboxImage = byId("lightboxImage");
+  const lightboxTitle = byId("lightboxTitle");
+  const lightboxClose = byId("lightboxClose");
 
-  const drawerIsOpen = () => drawer.classList.contains("is-open");
+  if (lightbox && lightboxImage && lightboxTitle) {
+    all(".gallery-item[data-image]").forEach((item) => {
+      item.addEventListener("click", () => {
+        lightboxImage.src = item.dataset.image || "";
+        lightboxImage.alt = item.dataset.title || "活動相片";
+        lightboxTitle.textContent = item.dataset.title || "";
+        lightbox.hidden = false;
+        document.body.style.overflow = "hidden";
+      });
+    });
 
-  const openDrawer = () => {
-    drawer.classList.add("is-open");
-    drawer.setAttribute("aria-hidden", "false");
-    backdrop.hidden = false;
-    requestAnimationFrame(() => backdrop.classList.add("is-visible"));
-    document.body.classList.add("drawer-open");
-    menuButton.setAttribute("aria-expanded", "true");
-    menuButton.setAttribute("aria-label", "關閉主選單");
-  };
+    const closeLightbox = () => {
+      lightbox.hidden = true;
+      lightboxImage.removeAttribute("src");
+      document.body.style.overflow = "";
+    };
 
-  const closeDrawer = () => {
-    drawer.classList.remove("is-open");
-    drawer.setAttribute("aria-hidden", "true");
-    backdrop.classList.remove("is-visible");
-    document.body.classList.remove("drawer-open");
-    menuButton.setAttribute("aria-expanded", "false");
-    menuButton.setAttribute("aria-label", "開啟主選單");
-    window.setTimeout(() => {
-      if (!drawerIsOpen()) backdrop.hidden = true;
-    }, 260);
-  };
+    if (lightboxClose) lightboxClose.addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+  }
 
-  menuButton.addEventListener("click", (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    drawerIsOpen() ? closeDrawer() : openDrawer();
-  });
+  // Share and LINE buttons.
+  const shareSite = byId("shareSite");
+  if (shareSite) {
+    shareSite.addEventListener("click", async () => {
+      const shareData = {
+        title: document.title,
+        text: "朱老師 AI 圍棋教學平台",
+        url: location.href
+      };
+      if (navigator.share) {
+        try { await navigator.share(shareData); } catch {}
+      } else {
+        const copied = await copyText(location.href);
+        alert(copied ? "網址已複製。" : "請手動複製網址。");
+      }
+    });
+  }
 
-  closeButton.addEventListener("click", closeDrawer);
-  backdrop.addEventListener("click", closeDrawer);
+  const lineButton = byId("lineButton");
+  if (lineButton) {
+    lineButton.addEventListener("click", async (event) => {
+      event.preventDefault();
+      const text = "朱老師您好，我想洽詢圍棋課程。";
+      const copied = await copyText(text);
+      alert(copied ? "洽詢文字已複製，請開啟 LINE 貼上傳送。" : text);
+    });
+  }
 
-  drawer.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", closeDrawer);
-  });
+  // Current drawer section highlight. Optional on older Safari.
+  const drawerLinks = all(".drawer-nav a[data-section]");
+  if ("IntersectionObserver" in window && drawerLinks.length) {
+    const sections = drawerLinks
+      .map((link) => byId(link.dataset.section))
+      .filter(Boolean);
 
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && drawerIsOpen()) closeDrawer();
-  });
+    const setActive = (id) => {
+      drawerLinks.forEach((link) => {
+        link.classList.toggle("is-active", link.dataset.section === id);
+      });
+    };
 
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 920 && drawerIsOpen()) closeDrawer();
-  });
+    const sectionObserver = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+      if (visible[0]) setActive(visible[0].target.id);
+    }, {
+      rootMargin: "-22% 0px -62% 0px",
+      threshold: [0.05, 0.2, 0.5]
+    });
 
+    sections.forEach((section) => sectionObserver.observe(section));
+  }
+
+  // Header shadow and back to top.
   const updateScrollUI = () => {
     const y = window.scrollY;
     if (header) header.classList.toggle("is-scrolled", y > 8);
     if (backToTop) backToTop.classList.toggle("is-visible", y > 700);
   };
-
   window.addEventListener("scroll", updateScrollUI, { passive: true });
   updateScrollUI();
 
@@ -192,76 +309,12 @@ document.getElementById("lineButton").addEventListener("click",async e=>{
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
-})();
 
-
-// Build 007.3: highlight the current drawer section
-(() => {
-  const links = Array.from(document.querySelectorAll(".drawer-nav a[data-section]"));
-  const sections = links
-    .map(link => document.getElementById(link.dataset.section))
-    .filter(Boolean);
-
-  if (!links.length || !sections.length) return;
-
-  const setActive = (id) => {
-    links.forEach(link => {
-      link.classList.toggle("is-active", link.dataset.section === id);
-    });
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    const visible = entries
-      .filter(entry => entry.isIntersecting)
-      .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-
-    if (visible[0]) setActive(visible[0].target.id);
-  }, {
-    rootMargin: "-22% 0px -62% 0px",
-    threshold: [0.05, 0.2, 0.5]
-  });
-
-  sections.forEach(section => observer.observe(section));
-
-  const hashId = location.hash.replace("#", "");
-  if (hashId) setActive(hashId);
-})();
-
-
-// Build 008: touch-friendly feedback and active navigation sync
-(() => {
-  document.querySelectorAll(".button, .event-card a, .news-content a").forEach((el) => {
-    el.addEventListener("pointerdown", () => el.classList.add("is-pressed"));
+  // Touch feedback.
+  all(".button, .event-card a, .news-content a").forEach((element) => {
+    element.addEventListener("pointerdown", () => element.classList.add("is-pressed"));
     ["pointerup", "pointercancel", "pointerleave"].forEach((eventName) => {
-      el.addEventListener(eventName, () => el.classList.remove("is-pressed"));
+      element.addEventListener(eventName, () => element.classList.remove("is-pressed"));
     });
   });
-
-  const form = document.querySelector("#register form, .register-form");
-  if (form) {
-    form.addEventListener("input", () => {
-      form.classList.add("form-active");
-    }, { once: true });
-  }
-})();
-
-
-// Build 008.1: Safari visibility safety
-(() => {
-  const showEverything = () => {
-    document.querySelectorAll(".reveal").forEach((el) => {
-      el.classList.add("is-visible");
-      el.style.opacity = "1";
-      el.style.visibility = "visible";
-      el.style.transform = "none";
-    });
-  };
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", showEverything, { once: true });
-  } else {
-    showEverything();
-  }
-
-  window.addEventListener("pageshow", showEverything);
 })();

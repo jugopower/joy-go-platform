@@ -8,7 +8,7 @@
   <meta property="og:title" content="朱老師 AI 圍棋教學平台">
   <meta property="og:description" content="30+年教學經驗 × AI圍棋觀念 × 段位進階指導">
   <meta property="og:type" content="website">
-  <title>朱老師 AI 圍棋教學平台｜Joy Go Platform Build 008.1</title>
+  <title>朱老師 AI 圍棋教學平台｜Joy Go Platform Build 008.2</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet">
@@ -174,14 +174,15 @@
           <p>實體與線上皆可洽詢；課程可採一對一、小班或活動講座。</p>
         </div>
 
-        <div class="course-filter">
+        <div class="course-filter" role="group" aria-label="課程分類篩選">
           <button type="button" class="active" data-filter="all">全部課程</button>
           <button type="button" data-filter="beginner">初學</button>
           <button type="button" data-filter="rank">級位・段位</button>
           <button type="button" data-filter="advanced">高段・AI</button>
         </div>
+        <p id="courseFilterStatus" class="filter-status" aria-live="polite">目前顯示全部課程</p>
         <div class="course-grid">
-          <article class="course-card" data-category="advanced" data-category="beginner">
+          <article class="course-card" data-category="beginner">
             <span class="course-index">01</span>
             <p class="course-level">零基礎・入門</p>
             <h3>初學啟蒙課程</h3>
@@ -208,7 +209,7 @@
             <a href="#register">預約棋力評估</a>
           </article>
 
-          <article class="course-card">
+          <article class="course-card" data-category="advanced">
             <span class="course-index">03</span>
             <p class="course-level">1 段～6 段</p>
             <h3>AI 高段進階指導</h3>
@@ -319,7 +320,7 @@
       <div><h4>教學地區</h4><p>汐止・南港・內湖及線上</p><p>兒童、成人、級位、段位與高段</p></div>
       <div><h4>快速連結</h4><a href="#courses">課程</a><a href="#events">活動</a><a href="#register">立即報名</a></div>
     </div>
-    <div class="container footer-bottom"><span>© 2026 朱老師 AI 圍棋教學平台</span><span>網站版本 Build 008.1</span></div>
+    <div class="container footer-bottom"><span>© 2026 朱老師 AI 圍棋教學平台</span><span>網站版本 Build 008.2</span></div>
   </footer>
 </article>
           <article class="testimonial-card"><div class="stars">★★★★★</div><blockquote>孩子開始會觀察全局，也更願意自己檢討對局，專注力和思考方式都有進步。</blockquote><button id="backToTop" class="back-to-top" type="button" aria-label="回到頁首">↑</button>
@@ -420,7 +421,7 @@
       <div><strong>Joy Go Platform</strong><p>朱老師 AI 圍棋教學平台</p></div>
       <div><span>電話</span><a href="tel:0931399910">0931-399-910</a></div>
       <div><span>教學地區</span><p>汐止・南港・內湖及線上</p></div>
-      <div><span>網站版本</span><p>Build 008.1</p></div>
+      <div><span>網站版本</span><p>Build 008.2</p></div>
     </div>
     <div class="container copyright">© <span id="year"></span> 朱老師 AI 圍棋教學平台</div>
   </footer>
