@@ -121,52 +121,60 @@ document.getElementById("lineButton").addEventListener("click",async e=>{
 });
 
 
-// Build 007.1: single stable navigation controller
+// Build 007.2: independent iPad / mobile drawer
 (() => {
   const header = document.querySelector(".site-header");
   const menuButton = document.querySelector(".menu-button");
-  const nav = document.querySelector(".main-nav");
-  const backdrop = document.getElementById("menuBackdrop");
+  const drawer = document.getElementById("mobileDrawer");
+  const backdrop = document.getElementById("drawerBackdrop");
+  const closeButton = document.getElementById("drawerClose");
   const backToTop = document.getElementById("backToTop");
 
-  if (!menuButton || !nav) return;
+  if (!menuButton || !drawer || !backdrop || !closeButton) return;
 
-  const isOpen = () => nav.classList.contains("open");
+  const drawerIsOpen = () => drawer.classList.contains("is-open");
 
-  const closeMenu = () => {
-    nav.classList.remove("open");
-    document.body.classList.remove("menu-open");
-    menuButton.setAttribute("aria-expanded", "false");
-    menuButton.setAttribute("aria-label", "開啟主選單");
-    if (backdrop) backdrop.hidden = true;
-  };
-
-  const openMenu = () => {
-    nav.classList.add("open");
-    document.body.classList.add("menu-open");
+  const openDrawer = () => {
+    drawer.classList.add("is-open");
+    drawer.setAttribute("aria-hidden", "false");
+    backdrop.hidden = false;
+    requestAnimationFrame(() => backdrop.classList.add("is-visible"));
+    document.body.classList.add("drawer-open");
     menuButton.setAttribute("aria-expanded", "true");
     menuButton.setAttribute("aria-label", "關閉主選單");
-    if (backdrop) backdrop.hidden = false;
+  };
+
+  const closeDrawer = () => {
+    drawer.classList.remove("is-open");
+    drawer.setAttribute("aria-hidden", "true");
+    backdrop.classList.remove("is-visible");
+    document.body.classList.remove("drawer-open");
+    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.setAttribute("aria-label", "開啟主選單");
+    window.setTimeout(() => {
+      if (!drawerIsOpen()) backdrop.hidden = true;
+    }, 260);
   };
 
   menuButton.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
-    isOpen() ? closeMenu() : openMenu();
+    drawerIsOpen() ? closeDrawer() : openDrawer();
   });
 
-  nav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", closeMenu);
-  });
+  closeButton.addEventListener("click", closeDrawer);
+  backdrop.addEventListener("click", closeDrawer);
 
-  if (backdrop) backdrop.addEventListener("click", closeMenu);
+  drawer.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeDrawer);
+  });
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && isOpen()) closeMenu();
+    if (event.key === "Escape" && drawerIsOpen()) closeDrawer();
   });
 
   window.addEventListener("resize", () => {
-    if (window.innerWidth > 920) closeMenu();
+    if (window.innerWidth > 920 && drawerIsOpen()) closeDrawer();
   });
 
   const updateScrollUI = () => {
@@ -180,7 +188,7 @@ document.getElementById("lineButton").addEventListener("click",async e=>{
 
   if (backToTop) {
     backToTop.addEventListener("click", () => {
-      closeMenu();
+      closeDrawer();
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   }

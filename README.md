@@ -1,18 +1,18 @@
-# Joy Go Platform Build 007.1
+# Joy Go Platform Build 007.2
 
-## 本次修正
-- 修正點擊三條線後選單與頁面內容重疊
-- 移除重複的選單 JavaScript，僅保留一套控制程式
-- 選單改為不透明的固定下拉面板
-- 選單提高至頁面最上層，不會被卡片或文字穿透
-- 新增半透明背景遮罩
-- 點選連結、遮罩或按 Esc 都會關閉選單
-- 選單開啟時停止背景捲動
-- iPad 與手機版隱藏浮動按鈕，避免遮住內容
-- 版本更新為 Build 007.1
+## 核心修正
+- 行動版選單改為完全獨立的右側抽屜，不再共用桌機導覽列
+- iPad 直式、iPad 分割畫面及 iPhone 均使用同一套抽屜
+- 點三條線後，選單由右側滑出
+- 新增深色背景遮罩
+- 點選連結、關閉按鈕、背景或 Esc 都能關閉
+- 選單開啟時鎖定背景捲動
+- 行動版完全隱藏舊導覽列，杜絕文字重疊
+- iPad 橫式寬度大於 920px 時維持完整橫向導覽
+- 版本更新為 Build 007.2
 
-## 更新方式
-解壓縮後，上傳並覆蓋：
+## 上傳與部署
+解壓縮後，把以下 6 個檔案全部上傳並覆蓋 GitHub 舊檔：
 - index.html
 - styles.css
 - script.js
@@ -20,5 +20,7 @@
 - render.yaml
 - .nojekyll
 
-按 Commit changes 後，到 Render：
+按 Commit changes 後，到 Render 執行：
 Manual Deploy → Deploy latest commit
+
+請確認 Render Events 顯示的是新的 Commit 編號和現在的部署時間，不能仍是舊的 905ffa1。
