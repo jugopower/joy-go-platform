@@ -8,7 +8,7 @@
   <meta property="og:title" content="朱老師 AI 圍棋教學平台">
   <meta property="og:description" content="30+年教學經驗 × AI圍棋觀念 × 段位進階指導">
   <meta property="og:type" content="website">
-  <title>朱老師 AI 圍棋教學平台｜Joy Go Platform</title>
+  <title>朱老師 AI 圍棋教學平台｜Joy Go Platform Build 007</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet">
@@ -27,7 +27,7 @@
         </span>
       </a>
 
-      <button class="menu-button" type="button" aria-expanded="false" aria-controls="mainNav">
+      <button class="menu-button" aria-label="開啟主選單" type="button" aria-expanded="false" aria-controls="mainNav">
         <span></span><span></span><span></span>
         <em>選單</em>
       </button>
@@ -75,10 +75,10 @@
             <span class="stone black s3"></span>
             <span class="stone white s4"></span>
             <span class="stone black s5"></span>
-            <div class="teacher-photo" aria-label="朱老師形象照片區">
+            <div class="teacher-photo" aria-label="朱老師教學形象片區">
               <div class="photo-placeholder">
-                <strong>朱老師形象照</strong>
-                <span>之後上傳 teacher.jpg<br>即可自動替換</span>
+                <strong>朱老師教學形象</strong>
+                <span>上傳 teacher.jpg<br>即可顯示真人照片</span>
               </div>
             </div>
             <div class="floating-card">
@@ -123,6 +123,29 @@
           <article>
             <span>03</span>
             <div><h3>傳統經驗結合 AI 觀念</h3><p>吸收現代 AI 棋理，同時保留容易理解、能實際運用的教學方式。</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="highlights" class="section highlights-section">
+      <div class="container">
+        <div class="highlight-grid">
+          <article class="highlight-card reveal">
+            <span class="highlight-number">30+</span>
+            <h3>年教學經驗</h3>
+            <p>從兒童啟蒙、成人學棋到高段實戰，建立可長期進步的思考流程。</p>
+          </article>
+          <article class="highlight-card reveal">
+            <span class="highlight-number">AI</span>
+            <h3>現代圍棋觀念</h3>
+            <p>把複雜的 AI 變化整理成實戰能使用的方向、判斷與原則。</p>
+          </article>
+          <article class="highlight-card reveal">
+            <span class="highlight-number">1對1</span>
+            <h3>個人棋力診斷</h3>
+            <p>依棋譜、棋風與目標安排訓練，不用盲目刷題或背定石。</p>
           </article>
         </div>
       </div>
@@ -262,13 +285,16 @@
     <section id="testimonials" class="section testimonials-section">
       <div class="container">
         <div class="section-heading reveal">
-          <div><p class="section-label">STUDENT STORIES</p><h2>學員學習成果</h2></div>
+          <div><p class="section-label">STUDENT STORIES</p><h2>學員學習回饋</h2></div>
           <p>以下為示範內容，之後可替換成真實學生心得與升段紀錄。</p>
         </div>
         <div class="testimonial-grid">
-          <article class="testimonial-card reveal"><div class="stars">★★★★★</div><blockquote>老師會直接指出最重要的問題，讓我每次上課後都知道下一步要練什麼。</blockquote><footer><strong>成人段位班學員</strong><span>布局方向與攻防觀念改善</span></footer></article>
-          <article class="testimonial-card reveal"><div class="stars">★★★★★</div><blockquote>孩子開始會觀察全局，也更願意自己檢討對局，專注力和思考方式都有進步。</blockquote><footer><strong>兒童班家長</strong><span>棋感、專注與思考流程提升</span></footer></article>
-          <article class="testimonial-card reveal"><div class="stars">★★★★★</div><blockquote>朱老師會把複雜的 AI 變化整理成容易理解的原則，真正能用在比賽中。</blockquote><footer><strong>高段進階學員</strong><span>AI 觀念與比賽策略訓練</span></footer></article>
+          <article class="testimonial-card reveal"><div class="stars">★★★★★</div><blockquote>老師會直接指出最重要的問題，讓我每次上課後都知道下一步要練什麼。</blockquote><button id="backToTop" class="back-to-top" type="button" aria-label="回到頁首">↑</button>
+  <footer><strong>成人段位班學員</strong><span>布局方向與攻防觀念改善</span></footer></article>
+          <article class="testimonial-card reveal"><div class="stars">★★★★★</div><blockquote>孩子開始會觀察全局，也更願意自己檢討對局，專注力和思考方式都有進步。</blockquote><button id="backToTop" class="back-to-top" type="button" aria-label="回到頁首">↑</button>
+  <footer><strong>兒童班家長</strong><span>棋感、專注與思考流程提升</span></footer></article>
+          <article class="testimonial-card reveal"><div class="stars">★★★★★</div><blockquote>朱老師會把複雜的 AI 變化整理成容易理解的原則，真正能用在比賽中。</blockquote><button id="backToTop" class="back-to-top" type="button" aria-label="回到頁首">↑</button>
+  <footer><strong>高段進階學員</strong><span>AI 觀念與比賽策略訓練</span></footer></article>
         </div>
       </div>
     </section>
@@ -331,7 +357,7 @@
             </select>
           </label>
           <label class="full">其他需求<textarea id="message" rows="4" placeholder="例如：希望週六下午上課"></textarea></label>
-          <button class="submit-button full" type="submit">產生並複製報名內容</button>
+          <button class="submit-button full" type="submit">產生並複製報名內容</button><p class="privacy-note">送出前不會上傳資料；按鈕只會在您的裝置產生可複製文字。</p>
           <div id="resultBox" class="result-box full" hidden>
             <p id="resultText"></p>
             <div>
@@ -357,12 +383,13 @@
   </div>
   <div class="share-float"><button id="shareSite" type="button">分享網站</button><a href="#register">立即報名</a></div>
 
+  <button id="backToTop" class="back-to-top" type="button" aria-label="回到頁首">↑</button>
   <footer>
     <div class="container footer-grid">
       <div><strong>Joy Go Platform</strong><p>朱老師 AI 圍棋教學平台</p></div>
       <div><span>電話</span><a href="tel:0931399910">0931-399-910</a></div>
       <div><span>教學地區</span><p>汐止・南港・內湖及線上</p></div>
-      <div><span>網站版本</span><p>Build 006.1</p></div>
+      <div><span>網站版本</span><p>Build 007</p></div>
     </div>
     <div class="container copyright">© <span id="year"></span> 朱老師 AI 圍棋教學平台</div>
   </footer>

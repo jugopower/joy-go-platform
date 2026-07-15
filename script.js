@@ -150,3 +150,57 @@ document.getElementById("lineButton").addEventListener("click",async e=>{
   document.addEventListener('click',(event)=>{if(!nav.contains(event.target)&&!menuButton.contains(event.target))closeMenu();});
   window.addEventListener('resize',()=>{if(window.innerWidth>920)closeMenu();});
 })();
+
+
+// Build 007: header shadow, stable mobile navigation, back-to-top
+(() => {
+  const header = document.querySelector(".site-header");
+  const menuButton = document.querySelector(".menu-button");
+  const nav = document.querySelector(".site-nav");
+  const backToTop = document.getElementById("backToTop");
+
+  const closeMenu = () => {
+    if (!nav || !menuButton) return;
+    nav.classList.remove("is-open");
+    document.body.classList.remove("menu-open");
+    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.setAttribute("aria-label", "開啟主選單");
+  };
+
+  const openMenu = () => {
+    if (!nav || !menuButton) return;
+    nav.classList.add("is-open");
+    document.body.classList.add("menu-open");
+    menuButton.setAttribute("aria-expanded", "true");
+    menuButton.setAttribute("aria-label", "關閉主選單");
+  };
+
+  if (menuButton && nav) {
+    menuButton.addEventListener("click", event => {
+      event.preventDefault();
+      event.stopPropagation();
+      nav.classList.contains("is-open") ? closeMenu() : openMenu();
+    }, true);
+
+    nav.querySelectorAll("a").forEach(link => link.addEventListener("click", closeMenu));
+    document.addEventListener("click", event => {
+      if (!nav.contains(event.target) && !menuButton.contains(event.target)) closeMenu();
+    });
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 920) closeMenu();
+    });
+  }
+
+  const updateScrollUI = () => {
+    const y = window.scrollY;
+    if (header) header.classList.toggle("is-scrolled", y > 8);
+    if (backToTop) backToTop.classList.toggle("is-visible", y > 700);
+  };
+
+  window.addEventListener("scroll", updateScrollUI, { passive: true });
+  updateScrollUI();
+
+  if (backToTop) {
+    backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+  }
+})();
