@@ -36,7 +36,7 @@
         <a href="#about">朱老師</a>
         <a href="#courses">課程</a>
         <a href="#events">活動</a><a href="#news">最新消息</a>
-        <a href="#results">教學特色</a><a href="#gallery">相簿</a>
+        <a href="#results">教學特色</a><a href="#gallery">相簿</a><a href="#testimonials">學員見證</a>
         <a href="#faq">常見問題</a>
         <a class="nav-contact" href="#register">立即報名</a>
       </nav>
@@ -135,8 +135,14 @@
           <p>實體與線上皆可洽詢；課程可採一對一、小班或活動講座。</p>
         </div>
 
+        <div class="course-filter reveal">
+          <button type="button" class="active" data-filter="all">全部課程</button>
+          <button type="button" data-filter="beginner">初學</button>
+          <button type="button" data-filter="rank">級位・段位</button>
+          <button type="button" data-filter="advanced">高段・AI</button>
+        </div>
         <div class="course-grid">
-          <article class="course-card reveal">
+          <article class="course-card reveal" data-category="advanced" data-category="beginner">
             <span class="course-index">01</span>
             <p class="course-level">零基礎・入門</p>
             <h3>初學啟蒙課程</h3>
@@ -149,7 +155,7 @@
             <a href="#register">詢問入門課程</a>
           </article>
 
-          <article class="course-card course-featured reveal">
+          <article class="course-card course-featured reveal" data-category="rank">
             <span class="popular">熱門課程</span>
             <span class="course-index">02</span>
             <p class="course-level">級位・段位</p>
@@ -244,10 +250,25 @@
           <p>之後只要上傳 gallery1.jpg～gallery4.jpg，即可自動換成真實照片。</p>
         </div>
         <div class="gallery-grid">
-          <figure class="gallery-item gallery-large reveal"><div class="gallery-photo gp1"></div><figcaption>朱老師教學現場</figcaption></figure>
-          <figure class="gallery-item reveal"><div class="gallery-photo gp2"></div><figcaption>棋聚交流</figcaption></figure>
-          <figure class="gallery-item reveal"><div class="gallery-photo gp3"></div><figcaption>AI 解盤講座</figcaption></figure>
-          <figure class="gallery-item reveal"><div class="gallery-photo gp4"></div><figcaption>學生實戰</figcaption></figure>
+          <button class="gallery-item gallery-large reveal" type="button" data-image="gallery1.jpg" data-title="朱老師教學現場"><div class="gallery-photo gp1"></div><span>朱老師教學現場</span></button>
+          <button class="gallery-item reveal" type="button" data-image="gallery2.jpg" data-title="棋聚交流"><div class="gallery-photo gp2"></div><span>棋聚交流</span></button>
+          <button class="gallery-item reveal" type="button" data-image="gallery3.jpg" data-title="AI 解盤講座"><div class="gallery-photo gp3"></div><span>AI 解盤講座</span></button>
+          <button class="gallery-item reveal" type="button" data-image="gallery4.jpg" data-title="學生實戰"><div class="gallery-photo gp4"></div><span>學生實戰</span></button>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="testimonials" class="section testimonials-section">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div><p class="section-label">STUDENT STORIES</p><h2>學員學習成果</h2></div>
+          <p>以下為示範內容，之後可替換成真實學生心得與升段紀錄。</p>
+        </div>
+        <div class="testimonial-grid">
+          <article class="testimonial-card reveal"><div class="stars">★★★★★</div><blockquote>老師會直接指出最重要的問題，讓我每次上課後都知道下一步要練什麼。</blockquote><footer><strong>成人段位班學員</strong><span>布局方向與攻防觀念改善</span></footer></article>
+          <article class="testimonial-card reveal"><div class="stars">★★★★★</div><blockquote>孩子開始會觀察全局，也更願意自己檢討對局，專注力和思考方式都有進步。</blockquote><footer><strong>兒童班家長</strong><span>棋感、專注與思考流程提升</span></footer></article>
+          <article class="testimonial-card reveal"><div class="stars">★★★★★</div><blockquote>朱老師會把複雜的 AI 變化整理成容易理解的原則，真正能用在比賽中。</blockquote><footer><strong>高段進階學員</strong><span>AI 觀念與比賽策略訓練</span></footer></article>
         </div>
       </div>
     </section>
@@ -288,14 +309,14 @@
           <p>填好資料後按「產生報名內容」，可直接複製並用電話、簡訊或 LINE 傳給朱老師。</p>
           <div class="contact-buttons">
             <a class="button button-gold" href="tel:0931399910">撥打 0931-399-910</a>
-            <a class="button button-dark-ghost" href="sms:0931399910">傳送簡訊</a>
+            <a class="button button-dark-ghost" href="sms:0931399910">傳送簡訊</a><a class="button button-line" href="#" id="lineButton">LINE 洽詢</a>
           </div>
         </div>
 
         <form id="registerForm" class="register-form reveal">
           <label>姓名<input id="name" type="text" required placeholder="請輸入姓名"></label>
           <label>聯絡電話<input id="phone" type="tel" required inputmode="tel" placeholder="例如：0912-345-678"></label>
-          <label>目前棋力
+          <label>LINE 顯示名稱<input id="lineName" type="text" placeholder="選填"></label><label>目前棋力
             <select id="level" required>
               <option value="">請選擇</option>
               <option>零基礎</option><option>20級～10級</option><option>9級～1級</option>
@@ -329,12 +350,19 @@
     <a href="#register">線上報名</a>
   </div>
 
+
+  <div id="galleryLightbox" class="lightbox" hidden role="dialog" aria-modal="true">
+    <button id="lightboxClose" type="button" aria-label="關閉">×</button>
+    <div class="lightbox-content"><img id="lightboxImage" alt=""><p id="lightboxTitle"></p></div>
+  </div>
+  <div class="share-float"><button id="shareSite" type="button">分享網站</button><a href="#register">立即報名</a></div>
+
   <footer>
     <div class="container footer-grid">
       <div><strong>Joy Go Platform</strong><p>朱老師 AI 圍棋教學平台</p></div>
       <div><span>電話</span><a href="tel:0931399910">0931-399-910</a></div>
       <div><span>教學地區</span><p>汐止・南港・內湖及線上</p></div>
-      <div><span>網站版本</span><p>Build 005</p></div>
+      <div><span>網站版本</span><p>Build 006</p></div>
     </div>
     <div class="container copyright">© <span id="year"></span> 朱老師 AI 圍棋教學平台</div>
   </footer>

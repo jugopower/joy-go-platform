@@ -71,6 +71,7 @@ form.addEventListener("submit", async event => {
 
   const name = document.getElementById("name").value.trim();
   const phone = document.getElementById("phone").value.trim();
+  const lineName = document.getElementById("lineName").value.trim();
   const level = document.getElementById("level").value;
   const course = document.getElementById("course").value;
   const message = document.getElementById("message").value.trim();
@@ -84,6 +85,7 @@ form.addEventListener("submit", async event => {
 
 姓名：${name}
 電話：${phone}
+LINE 顯示名稱：${lineName || "未填"}
 目前棋力：${level}
 課程需求：${course}
 其他需求：${message || "無"}
@@ -105,4 +107,32 @@ form.addEventListener("submit", async event => {
 copyAgain.addEventListener("click", async () => {
   const copied = await copyText(generatedText);
   status.textContent = copied ? "已再次複製。" : "請長按報名內容手動複製。";
+});
+
+document.querySelectorAll(".course-filter button").forEach(button=>{
+  button.addEventListener("click",()=>{
+    document.querySelectorAll(".course-filter button").forEach(x=>x.classList.remove("active"));
+    button.classList.add("active");
+    const f=button.dataset.filter;
+    document.querySelectorAll(".course-card").forEach(card=>{
+      card.classList.toggle("is-hidden",f!=="all"&&card.dataset.category!==f);
+    });
+  });
+});
+const lb=document.getElementById("galleryLightbox"),lbImg=document.getElementById("lightboxImage"),lbTitle=document.getElementById("lightboxTitle");
+document.querySelectorAll(".gallery-item[data-image]").forEach(item=>item.addEventListener("click",()=>{
+  lbImg.src=item.dataset.image;lbImg.alt=item.dataset.title;lbTitle.textContent=item.dataset.title;lb.hidden=false;document.body.style.overflow="hidden";
+}));
+function closeLB(){lb.hidden=true;lbImg.removeAttribute("src");document.body.style.overflow="";}
+document.getElementById("lightboxClose").addEventListener("click",closeLB);
+lb.addEventListener("click",e=>{if(e.target===lb)closeLB();});
+document.getElementById("shareSite").addEventListener("click",async()=>{
+  const data={title:document.title,text:"朱老師 AI 圍棋教學平台",url:location.href};
+  if(navigator.share){try{await navigator.share(data);}catch(e){}}
+  else{await navigator.clipboard.writeText(location.href);alert("網址已複製。");}
+});
+document.getElementById("lineButton").addEventListener("click",async e=>{
+  e.preventDefault();const t="朱老師您好，我想洽詢圍棋課程。";
+  try{await navigator.clipboard.writeText(t);alert("洽詢文字已複製，請開啟 LINE 貼上傳送。");}
+  catch(err){alert(t);}
 });
