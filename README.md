@@ -1,19 +1,37 @@
-# Joy Go Platform Build 003
+# Joy Go Platform Build 004
 
-新增：品牌首頁、每日 AI 圍棋小技巧、朱老師完整介紹、最新消息、相簿、影音專區，以及 iPad Air／iPhone／Android／Windows／Mac 響應式操作。
+朱老師 AI 圍棋教學平台的正式招生版。
 
-## 圖片檔名
-將圖片放進 images 資料夾：
-- hero.jpg
-- teacher.jpg
-- news1.jpg、news2.jpg、news3.jpg
-- gallery1.jpg、gallery2.jpg、gallery3.jpg、gallery4.jpg
+## Build 004 新增
+- 全新高質感首頁與圍棋視覺
+- 朱老師教學理念與完整課程架構
+- 活動專區、教學流程、常見問題
+- iPad / iPhone / Android / Windows / Mac 響應式設計
+- 手機底部快速電話與報名按鈕
+- 報名資料自動產生並複製
+- 每日 AI 圍棋觀念
+- SEO 與社群分享基本設定
+- 不需要 images 資料夾，iPad 上傳更容易
 
-沒有放照片時，網站仍會顯示漸層背景。
+## 上傳 GitHub
+在現有 Repository 內：
+1. Add file → Upload files
+2. 上傳以下檔案並覆蓋舊檔：
+   - index.html
+   - styles.css
+   - script.js
+   - README.md
+   - render.yaml
+   - .nojekyll
+3. 按 Commit changes
+4. GitHub Pages 會自動重新部署
 
-## Render 部署
-1. 解壓縮並將全部檔案上傳 GitHub。
-2. Render 選 New → Static Site。
-3. 連接 Repository。
-4. Build Command 留空。
-5. Publish Directory 填入 `.`。
+## 加入朱老師照片
+之後只要另外上傳一張照片到 Repository 根目錄：
+- 檔名必須是 `teacher.jpg`
+
+網站就會自動顯示照片，不需要修改程式。
+
+## 注意
+目前報名資料會複製到剪貼簿，方便貼到 LINE 或簡訊。
+正式會員與資料庫功能會在後續版本加入。
