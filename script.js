@@ -318,3 +318,17 @@ LINE 顯示名稱：${lineName || "未填"}
     });
   });
 })();
+
+
+// Build 009: FAQ single-open behavior
+(() => {
+  const faqItems = Array.from(document.querySelectorAll(".accordion details"));
+  faqItems.forEach((item) => {
+    item.addEventListener("toggle", () => {
+      if (!item.open) return;
+      faqItems.forEach((other) => {
+        if (other !== item) other.open = false;
+      });
+    });
+  });
+})();
