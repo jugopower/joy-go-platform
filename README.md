@@ -1,18 +1,32 @@
-# Joy Go Platform Build 007.3
+# Joy Go Platform Build 008
 
-## 本版升級
-- 保留 Build 007.2 已成功的右側抽屜選單
-- 抽屜寬度加大，iPad 上閱讀更舒適
-- 加入品牌雙圓標誌
-- 每個選單項目加入專屬中文字圖示
-- 目前所在區塊自動高亮
-- 選單卡片改為圓角 Apple 風格
-- 抽屜、遮罩與按壓動畫更細緻
-- 電話區改為深綠漸層
-- 版本更新為 Build 007.3
+## 正式招生首頁版
+- 全新 Hero 首頁形象區
+- 30+ 年教學、AI 圍棋、段位提升主標語
+- teacher.jpg 真人照片自動載入
+- 完整朱老師介紹與經歷數據
+- 四大教學核心
+- 最新消息三張圖片卡片
+- 近期活動專區
+- 課程、相簿、學員見證與 FAQ 保留
+- 正式企業型 Footer
+- iPad、iPhone、桌機響應式優化
+- 保留 Build 007.3 穩定的 Apple 風格側邊抽屜選單
+- 網站版本更新為 Build 008
 
-## 上傳方式
-解壓縮後，將以下 6 個檔案全部上傳並覆蓋 GitHub：
+## 可上傳照片
+請放在 GitHub Repository 根目錄：
+- teacher.jpg
+- news1.jpg
+- news2.jpg
+- news3.jpg
+- gallery1.jpg
+- gallery2.jpg
+- gallery3.jpg
+- gallery4.jpg
+
+## 部署方式
+解壓縮後，將以下 6 個檔案上傳並覆蓋 GitHub：
 - index.html
 - styles.css
 - script.js

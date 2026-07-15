@@ -226,3 +226,21 @@ document.getElementById("lineButton").addEventListener("click",async e=>{
   const hashId = location.hash.replace("#", "");
   if (hashId) setActive(hashId);
 })();
+
+
+// Build 008: touch-friendly feedback and active navigation sync
+(() => {
+  document.querySelectorAll(".button, .event-card a, .news-content a").forEach((el) => {
+    el.addEventListener("pointerdown", () => el.classList.add("is-pressed"));
+    ["pointerup", "pointercancel", "pointerleave"].forEach((eventName) => {
+      el.addEventListener(eventName, () => el.classList.remove("is-pressed"));
+    });
+  });
+
+  const form = document.querySelector("#register form, .register-form");
+  if (form) {
+    form.addEventListener("input", () => {
+      form.classList.add("form-active");
+    }, { once: true });
+  }
+})();
