@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: joy-go-platform
+    runtime: static
+    buildCommand: ""
+    staticPublishPath: .
