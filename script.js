@@ -357,3 +357,35 @@ LINE 顯示名稱：${lineName || "未填"}
   if (register) observer.observe(register);
   if (footer) observer.observe(footer);
 })();
+
+
+// Build 010.1: expandable contact launcher
+(() => {
+  const launcher = document.querySelector(".contact-launcher");
+  const actions = document.getElementById("contactActions");
+  if (!launcher || !actions) return;
+
+  const close = () => {
+    launcher.setAttribute("aria-expanded", "false");
+    actions.hidden = true;
+  };
+
+  launcher.addEventListener("click", (event) => {
+    event.stopPropagation();
+    const isOpen = launcher.getAttribute("aria-expanded") === "true";
+    launcher.setAttribute("aria-expanded", String(!isOpen));
+    actions.hidden = isOpen;
+  });
+
+  actions.addEventListener("click", (event) => {
+    if (event.target.closest("a")) close();
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!event.target.closest(".floating-contact")) close();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") close();
+  });
+})();
