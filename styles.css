@@ -1749,3 +1749,37 @@ section[id],
     bottom:calc(16px + env(safe-area-inset-bottom))!important;
   }
 }
+
+
+/* ===== Build 010.2 contact button hotfix ===== */
+.floating-contact.is-muted{
+  opacity:1!important;
+  pointer-events:auto!important;
+  transform:translateY(-78px)!important;
+}
+
+.contact-launcher{
+  position:relative;
+  z-index:2;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+  cursor:pointer;
+}
+
+.contact-actions{
+  position:absolute;
+  right:0;
+  bottom:64px;
+  z-index:1;
+}
+
+.contact-actions a{
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+}
+
+@media(max-width:720px){
+  .floating-contact.is-muted{
+    transform:translateY(-96px)!important;
+  }
+}

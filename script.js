@@ -389,3 +389,57 @@ LINE 顯示名稱：${lineName || "未填"}
     if (event.key === "Escape") close();
   });
 })();
+
+
+// Build 010.2: robust iPad contact launcher hotfix
+(() => {
+  const launcher = document.querySelector(".contact-launcher");
+  const actions = document.getElementById("contactActions");
+  if (!launcher || !actions) return;
+
+  // Prevent duplicate handlers from causing an instant open/close cycle.
+  const newLauncher = launcher.cloneNode(true);
+  launcher.replaceWith(newLauncher);
+
+  const button = document.querySelector(".contact-launcher");
+  let lastPointerTime = 0;
+
+  const setOpen = (open) => {
+    button.setAttribute("aria-expanded", String(open));
+    actions.hidden = !open;
+  };
+
+  const toggle = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    const open = button.getAttribute("aria-expanded") === "true";
+    setOpen(!open);
+  };
+
+  button.addEventListener("pointerup", (event) => {
+    lastPointerTime = Date.now();
+    toggle(event);
+  }, { passive: false });
+
+  button.addEventListener("click", (event) => {
+    if (Date.now() - lastPointerTime < 500) {
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    }
+    toggle(event);
+  });
+
+  actions.addEventListener("click", (event) => {
+    const link = event.target.closest("a");
+    if (link) setOpen(false);
+  });
+
+  document.addEventListener("pointerup", (event) => {
+    if (!event.target.closest(".floating-contact")) setOpen(false);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") setOpen(false);
+  });
+})();

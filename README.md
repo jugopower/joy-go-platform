@@ -1,13 +1,13 @@
-# Joy Go Platform Build 010.1
+# Joy Go Platform Build 010.2
 
-## 修正內容
-- 浮動電話與 LINE 改成單一「聯絡」按鈕
-- 點擊「聯絡」後才展開電話與 LINE，避免長時間遮住內容
-- 接近報名表與 Footer 時，聯絡按鈕會完全隱藏
-- 相簿標籤不再重複顯示
-- 學員見證取消多餘的左右引號
-- 所有導覽跳轉加入 Header 安全距離，標題不再被遮住
-- 版本更新為 Build 010.1
+## 緊急修正
+- 修正 iPad 上右下「聯絡」按鈕看得到但無法點擊
+- 移除 `pointer-events: none` 停用狀態
+- 接近報名表時改為自動往上移，不再停用按鈕
+- 加入 iPad Safari 專用 pointer 事件處理
+- 點一次展開電話／LINE，再點一次收合
+- 點選其他位置會自動收合
+- 版本更新為 Build 010.2
 
 ## 上傳與部署
 解壓縮後，將以下 6 個檔案全部上傳並覆蓋 GitHub：
@@ -22,4 +22,4 @@
 Manual Deploy → Deploy latest commit
 
 部署後測試：
-https://joy-go-platform.onrender.com/?v=10.1
+https://joy-go-platform.onrender.com/?v=10.2
