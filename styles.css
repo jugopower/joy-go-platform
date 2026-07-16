@@ -1783,3 +1783,102 @@ section[id],
     transform:translateY(-96px)!important;
   }
 }
+
+
+/* ===== Build 010.3 native iPad contact control ===== */
+.native-contact{
+  position:fixed;
+  right:max(14px,env(safe-area-inset-right));
+  bottom:calc(18px + env(safe-area-inset-bottom));
+  z-index:999;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  width:auto;
+  opacity:1!important;
+  pointer-events:auto!important;
+  transform:none!important;
+}
+
+.native-contact summary{
+  list-style:none;
+  display:grid;
+  place-items:center;
+  width:58px;
+  height:58px;
+  padding:0;
+  border:2px solid rgba(255,255,255,.88);
+  border-radius:50%;
+  background:#123b2e;
+  color:#fff;
+  font-size:13px;
+  font-weight:900;
+  box-shadow:0 12px 30px rgba(0,0,0,.22);
+  cursor:pointer;
+  user-select:none;
+  -webkit-user-select:none;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+}
+
+.native-contact summary::-webkit-details-marker{
+  display:none;
+}
+
+.native-contact[open] summary{
+  background:#0a2b20;
+}
+
+.native-contact .contact-actions{
+  position:absolute;
+  right:0;
+  bottom:66px;
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+  width:auto;
+}
+
+.native-contact:not([open]) .contact-actions{
+  display:none!important;
+}
+
+.native-contact .contact-actions a{
+  display:grid;
+  place-items:center;
+  width:54px;
+  height:54px;
+  border:2px solid rgba(255,255,255,.88);
+  border-radius:50%;
+  color:#fff;
+  font-size:12px;
+  font-weight:900;
+  text-decoration:none;
+  box-shadow:0 10px 26px rgba(0,0,0,.2);
+  -webkit-tap-highlight-color:transparent;
+}
+
+.native-contact .float-phone{
+  background:#123b2e;
+}
+
+.native-contact .float-line{
+  background:#06c755;
+}
+
+.native-contact.is-muted{
+  opacity:1!important;
+  pointer-events:auto!important;
+  transform:translateY(-92px)!important;
+}
+
+@media(max-width:720px){
+  .native-contact{
+    right:12px;
+    bottom:calc(72px + env(safe-area-inset-bottom));
+  }
+
+  .native-contact.is-muted{
+    transform:translateY(-108px)!important;
+  }
+}
