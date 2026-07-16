@@ -1381,3 +1381,50 @@ body{
     padding-bottom:100px!important;
   }
 }
+
+
+/* ===== Build 009.1 navigation and structure repair ===== */
+.main-nav .drawer-icon{
+  display:none!important;
+}
+
+.main-nav a{
+  white-space:nowrap;
+}
+
+.testimonial-card .site-footer,
+.testimonial-card .floating-contact,
+.testimonial-card .back-to-top{
+  display:none!important;
+}
+
+.testimonial-card footer{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+  margin-top:26px;
+  padding:0;
+  background:transparent;
+  color:inherit;
+}
+
+.testimonial-card footer strong{
+  color:var(--forest)!important;
+  font-size:17px;
+}
+
+.testimonial-card footer span{
+  color:var(--muted)!important;
+  font-size:14px;
+}
+
+.footer-build008{
+  width:100%;
+  margin:0;
+}
+
+@media(max-width:920px){
+  .main-nav{
+    display:none!important;
+  }
+}
