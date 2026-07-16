@@ -1,22 +1,27 @@
-# Joy Go Platform Build 009.1
+# Joy Go Platform Build 010
 
-## 修正內容
-- 修正桌機／iPad 橫式導覽列錯字：
-  - 師朱老師 → 朱老師
-  - 課課程 → 課程
-  - 活活動 → 活動
-  - 新最新消息 → 最新消息
-  - 特教學特色 → 教學特色
-  - 相相簿 → 相簿
-  - 證學員見證 → 學員見證
-  - 問常見問題 → 常見問題
-- 行動版右側選單仍保留「師、課、活、新、特、相、證、問」圖示
-- 修正 Footer 誤跑進第一張學員見證卡片
-- 修正重複的回到頁首按鈕
-- 修正重複浮動電話／LINE 按鈕
-- 重建三張學員見證卡片
-- Footer 恢復到整個網站最底部
-- 版本更新為 Build 009.1
+## 本版重點
+- 右上選單改為標準「三條線＋選單」橫式按鈕
+- 加大 iPad／手機觸控區，避免文字直排與按不到
+- 選單開啟時三條線會轉成關閉符號
+- 電話、LINE 浮動按鈕縮小並加入安全邊距
+- 接近報名表與 Footer 時，浮動按鈕自動淡出避免遮擋
+- 修正學員見證引號與標點顯示
+- 改善 teacher、news、gallery 尚未放照片時的示意畫面
+- 增加正式照片檔名提醒區
+- 保留課程篩選、FAQ、側邊選單、報名表等互動功能
+- 網站版本更新為 Build 010
+
+## 照片檔名
+將下列照片直接上傳到 GitHub 根目錄：
+- teacher.jpg
+- news1.jpg
+- news2.jpg
+- news3.jpg
+- gallery1.jpg
+- gallery2.jpg
+- gallery3.jpg
+- gallery4.jpg
 
 ## 上傳與部署
 解壓縮後，將以下 6 個檔案全部上傳並覆蓋 GitHub：
@@ -31,4 +36,4 @@
 Manual Deploy → Deploy latest commit
 
 部署完成後請測試：
-https://joy-go-platform.onrender.com/?v=9.1
+https://joy-go-platform.onrender.com/?v=10

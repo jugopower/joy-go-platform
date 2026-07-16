@@ -332,3 +332,28 @@ LINE 顯示名稱：${lineName || "未填"}
     });
   });
 })();
+
+
+// Build 010: keep floating controls from covering registration/footer
+(() => {
+  const floating = document.querySelector(".floating-contact");
+  const backToTop = document.getElementById("backToTop");
+  const register = document.getElementById("register");
+  const footer = document.querySelector(".site-footer");
+
+  if (!floating || !("IntersectionObserver" in window)) return;
+
+  const update = (entries) => {
+    const shouldHide = entries.some((entry) => entry.isIntersecting);
+    floating.classList.toggle("is-muted", shouldHide);
+    if (backToTop) backToTop.classList.toggle("avoid-content", shouldHide);
+  };
+
+  const observer = new IntersectionObserver(update, {
+    rootMargin: "0px 0px -15% 0px",
+    threshold: 0.08
+  });
+
+  if (register) observer.observe(register);
+  if (footer) observer.observe(footer);
+})();
