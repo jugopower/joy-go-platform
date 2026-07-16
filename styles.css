@@ -1882,3 +1882,35 @@ section[id],
     transform:translateY(-108px)!important;
   }
 }
+
+
+/* ===== Build 010.4 portrait teacher photo clarity ===== */
+@media (max-width: 720px) and (orientation: portrait) {
+  .hero-photo {
+    background:
+      linear-gradient(160deg, rgba(9,43,31,.04), rgba(5,25,18,.30)),
+      url("teacher.jpg") center 38% / cover no-repeat,
+      linear-gradient(135deg,#cda766,#344f3f) !important;
+    filter: none !important;
+    -webkit-filter: none !important;
+  }
+
+  .hero-photo::before,
+  .hero-photo::after {
+    filter: none !important;
+    -webkit-filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .photo-placeholder {
+    background: rgba(8,34,24,.28) !important;
+    backdrop-filter: blur(1px) !important;
+    -webkit-backdrop-filter: blur(1px) !important;
+    text-shadow: 0 2px 10px rgba(0,0,0,.55);
+  }
+
+  .photo-placeholder span {
+    color: rgba(255,255,255,.88) !important;
+  }
+}
