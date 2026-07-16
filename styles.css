@@ -1914,3 +1914,53 @@ section[id],
     color: rgba(255,255,255,.88) !important;
   }
 }
+
+
+/* ===== Build 010.5 teacher photo cleanup ===== */
+
+/* 隱藏所有照片檔名提示 */
+.hero-photo .file-name,
+.hero-photo .filename,
+.hero-photo .photo-file,
+.teacher-photo .file-name,
+.teacher-photo .filename,
+.teacher-photo .photo-file,
+.hero-photo [data-filename],
+.teacher-photo [data-filename]{
+  display:none!important;
+}
+
+/* 橫式首頁照片清晰化 */
+@media (min-width: 721px) and (orientation: landscape) {
+  .hero-photo {
+    background:
+      linear-gradient(160deg, rgba(8,39,28,.06), rgba(5,25,18,.22)),
+      url("teacher.jpg") center 38% / cover no-repeat,
+      linear-gradient(135deg,#cda766,#344f3f) !important;
+    filter:none!important;
+    -webkit-filter:none!important;
+  }
+
+  .hero-photo::before,
+  .hero-photo::after{
+    filter:none!important;
+    -webkit-filter:none!important;
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+  }
+
+  .photo-placeholder{
+    background:rgba(7,31,23,.20)!important;
+    backdrop-filter:blur(.5px)!important;
+    -webkit-backdrop-filter:blur(.5px)!important;
+    text-shadow:0 2px 10px rgba(0,0,0,.55);
+  }
+}
+
+/* 直式也確保沒有殘留模糊 */
+@media (max-width: 720px) and (orientation: portrait) {
+  .hero-photo{
+    filter:none!important;
+    -webkit-filter:none!important;
+  }
+}
