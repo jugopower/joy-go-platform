@@ -1756,3 +1756,62 @@ body>footer .footer-grid p,body>footer .footer-grid a{overflow-wrap:normal!impor
   #lightboxClose em{font-size:16px}
   .lightbox-content img{max-height:calc(100dvh - 165px);border-radius:14px}
 }
+
+/* ===== Build 011.8 gallery clarity and floating-control spacing ===== */
+/* Keep gallery photos true to the original image. */
+.gp1{background-image:url("gallery1.jpg")!important}
+.gp2{background-image:url("gallery2.jpg")!important}
+.gp3{background-image:url("gallery3.jpg")!important}
+.gp4{background-image:url("gallery4.jpg")!important}
+.gallery-photo{
+  filter:none!important;
+  opacity:1!important;
+  background-color:#263f32;
+}
+.gallery-item::after{
+  content:"";
+  position:absolute;
+  left:0;right:0;bottom:0;
+  height:34%;
+  z-index:1;
+  pointer-events:none;
+  background:linear-gradient(to top,rgba(0,0,0,.38),rgba(0,0,0,0));
+}
+.gallery-item span,
+.gallery-item figcaption{
+  z-index:2!important;
+  background:rgba(7,25,17,.72)!important;
+  color:#fff!important;
+  box-shadow:0 4px 16px rgba(0,0,0,.16);
+}
+
+/* Make fixed controls less intrusive on iPad and reserve a safe text area. */
+@media (min-width:721px) and (max-width:1280px){
+  #news .container,
+  #events .container,
+  #testimonials .container,
+  #faq .container,
+  #register .container{
+    width:min(1160px,calc(100% - 132px))!important;
+    margin-left:20px!important;
+    margin-right:112px!important;
+  }
+  .contact-toggle{width:62px!important;height:62px!important;font-size:15px!important}
+  .contact-action{width:54px!important;height:54px!important;font-size:13px!important}
+  .contact-fab{right:16px!important;bottom:30px!important}
+  .back-to-top{right:90px!important;bottom:31px!important;width:54px!important;height:54px!important}
+}
+
+@media (max-width:720px){
+  .contact-toggle{width:58px!important;height:58px!important;font-size:14px!important}
+  .contact-action{width:50px!important;height:50px!important;font-size:12px!important}
+  .contact-fab{right:10px!important;bottom:22px!important}
+  .back-to-top{right:76px!important;bottom:24px!important;width:50px!important;height:50px!important}
+  #news .container,
+  #events .container,
+  #testimonials .container,
+  #faq .container,
+  #register .container{
+    width:calc(100% - 32px)!important;
+  }
+}
