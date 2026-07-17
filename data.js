@@ -1,7 +1,7 @@
 /*
-  Joy Go Platform Build 011.5
+  Joy Go Platform Build 011.6
   日後修改「朱老師教學經歷與實戰成果」或相簿，只需要編輯此檔案。
-  文字請保留引號與逗號；圖片請先上傳到 images/gallery/。
+  文字請保留引號與逗號；圖片請直接上傳到 GitHub 根目錄。
 */
 window.JOY_GO_DATA = {
   teacherExperience: [
@@ -38,9 +38,9 @@ window.JOY_GO_DATA = {
   ],
 
   gallery: [
-    { image: "images/gallery/gallery1.jpg", title: "朱老師教學現場", large: true },
-    { image: "images/gallery/gallery2.jpg", title: "棋聚交流" },
-    { image: "images/gallery/gallery3.jpg", title: "AI 解盤講座" },
-    { image: "images/gallery/gallery4.jpg", title: "學生實戰" }
+    { image: "gallery1.jpg", title: "朱老師教學現場", large: true },
+    { image: "gallery2.jpg", title: "棋聚交流" },
+    { image: "gallery3.jpg", title: "AI 解盤講座" },
+    { image: "gallery4.jpg", title: "學生實戰" }
   ]
 };

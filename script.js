@@ -212,7 +212,7 @@ LINE 顯示名稱：${lineName || "未填"}
   }
 
 
-  // Build 011.5: render editable content from data.js.
+  // Build 011.6: render editable content from data.js.
   const siteData = window.JOY_GO_DATA || {};
 
   const experienceGrid = byId("experienceGrid");

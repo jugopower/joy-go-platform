@@ -1,37 +1,36 @@
-# Joy Go Platform Build 011.5
+# Joy Go Platform Build 011.6
 
-本版保留 Build 011.4 的外觀與互動功能，新增較容易維護的資料架構。
+## 本版重點
 
-## 本版更新
+- 所有網站圖片改為放在 GitHub 根目錄，方便 iPad 上傳。
+- 首頁主圖讀取 `hero.jpg`。
+- 老師照片讀取 `teacher.jpg`。
+- 最新消息照片讀取 `news1.jpg`、`news2.jpg`、`news3.jpg`。
+- 相簿照片讀取 `gallery1.jpg`～`gallery4.jpg`。
+- 保留 `data.js`，可集中修改「朱老師教學經歷與實戰成果」及相簿文字。
+- 網站版本更新為 Build 011.6。
 
-- 新增 `data.js`：集中管理「朱老師教學經歷與實戰成果」及相簿資料。
-- 新增 `images/` 分類資料夾。
-- 首頁主圖移至 `images/hero/hero.jpg`。
-- 相簿圖片改放在 `images/gallery/`。
-- 網站版本更新為 Build 011.5。
+## 上傳方式
+
+把以下檔案直接上傳到 GitHub 專案最外層，覆蓋同名檔案：
+
+- `index.html`
+- `styles.css`
+- `script.js`
+- `data.js`
+- `README.md`
+- `render.yaml`
+- `hero.jpg`
+
+原本已存在的 `teacher.jpg`、`news1.jpg`、`news2.jpg`、`news3.jpg` 可保留。
+
+日後新增相簿，只要在根目錄上傳：
+
+- `gallery1.jpg`
+- `gallery2.jpg`
+- `gallery3.jpg`
+- `gallery4.jpg`
 
 ## 修改教學經歷與實戰成果
 
-打開 `data.js`，修改 `teacherExperience` 內的：
-
-- `badge`：短標籤，例如「30+ 年」
-- `title`：標題
-- `description`：說明文字
-
-增加一筆時，複製一組 `{ ... }` 並修改內容即可。
-
-## 上傳相簿照片
-
-1. 將照片命名為 `gallery1.jpg`、`gallery2.jpg` 等。
-2. 上傳到 `images/gallery/`。
-3. 在 `data.js` 的 `gallery` 區修改圖片路徑與標題。
-
-範例：
-
-```js
-{ image: "images/gallery/gallery5.jpg", title: "學生比賽實戰" }
-```
-
-## GitHub 上傳
-
-請把本資料夾內所有檔案與資料夾上傳到 GitHub 專案根目錄，覆蓋同名檔案。Render 會自動重新部署。
+打開 `data.js`，修改 `teacherRecords` 內的文字，再 Commit changes 即可。
