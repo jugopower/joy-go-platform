@@ -1649,3 +1649,53 @@ body>footer .footer-grid p,body>footer .footer-grid a{overflow-wrap:normal!impor
   body.drawer-open .share-float,
   body.drawer-open .back-to-top{pointer-events:none!important}
 }
+
+/* ===== Build 011.4 ===== */
+.menu-button{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:9px!important;
+  width:auto!important;
+  min-width:108px!important;
+  height:54px!important;
+  padding:0 16px!important;
+  border:1px solid var(--line)!important;
+  border-radius:16px!important;
+  background:#fff!important;
+  color:var(--forest)!important;
+  box-shadow:0 8px 22px rgba(17,46,34,.06)!important;
+  overflow:hidden!important;
+  white-space:nowrap!important;
+}
+.menu-button span{display:none!important}
+.menu-button::before{
+  content:"☰";
+  display:block;
+  font-size:28px;
+  line-height:1;
+  font-weight:700;
+  letter-spacing:0;
+}
+.menu-button em{font-size:15px!important;font-weight:900!important;line-height:1!important}
+@media(min-width:1181px){.menu-button{display:none!important}}
+@media(max-width:620px){
+  .menu-button{min-width:96px!important;height:50px!important;padding:0 13px!important;border-radius:14px!important}
+  .menu-button::before{font-size:25px}
+  .menu-button em{font-size:14px!important}
+}
+
+.teacher-photo-large{color:transparent!important}
+.teacher-photo-large>span{display:none!important}
+
+.experience-section{background:linear-gradient(180deg,#fff 0%,#f5efe3 100%)}
+.experience-heading{margin-bottom:34px}
+.experience-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.experience-card{position:relative;min-height:230px;padding:30px;border:1px solid var(--line);border-radius:24px;background:#fff;box-shadow:var(--shadow-soft);overflow:hidden}
+.experience-card>span{position:absolute;right:22px;top:12px;font-family:"Noto Serif TC";font-size:56px;font-weight:900;color:rgba(17,59,43,.06)}
+.experience-card>strong{display:inline-block;color:var(--gold);font-family:"Noto Serif TC";font-size:30px;line-height:1.1}
+.experience-card h3{margin:18px 0 10px;color:var(--forest);font-size:21px}
+.experience-card p{margin:0;color:var(--muted);line-height:1.8}
+.experience-note{margin:22px 0 0;color:var(--muted);font-size:13px;text-align:right}
+@media(max-width:920px){.experience-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.experience-grid{grid-template-columns:1fr}.experience-card{min-height:auto}.experience-note{text-align:left}}
