@@ -97,7 +97,7 @@
     });
 
     window.addEventListener("resize", () => {
-      if (window.innerWidth > 920 && drawerIsOpen()) closeDrawer();
+      if (window.innerWidth > 1280 && drawerIsOpen()) closeDrawer();
     });
   }
 
