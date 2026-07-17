@@ -3,24 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#0f3428">
-  <meta name="description" content="朱老師 AI 圍棋教學平台｜30+年教學經驗、AI圍棋觀念、應昌期圍棋教育基金會講師、野狐9D。">
+  <meta name="theme-color" content="#173428">
+  <meta name="description" content="朱老師圍棋教學｜30+年教學經驗、AI圍棋觀念、初學啟蒙、段位突破、一對一指導與棋友活動。">
   <meta property="og:title" content="朱老師 AI 圍棋教學平台">
-  <meta property="og:description" content="30+ 年教學經驗 × AI 圍棋分析 × 個人化教學">
-  <meta property="og:image" content="hero-main.png">
+  <meta property="og:description" content="30+年教學經驗 × AI圍棋觀念 × 段位進階指導">
   <meta property="og:type" content="website">
-  <title>朱老師 AI 圍棋教學平台｜Joy Go Platform Build 010.7</title>
+  <title>朱老師 AI 圍棋教學平台｜Joy Go Platform Build 009</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
   <a class="skip-link" href="#main">跳到主要內容</a>
 
   <header class="site-header">
     <div class="container nav-wrap">
-      <a class="brand" href="#home" aria-label="回到首頁">
+      <a class="brand" href="#home" aria-label="朱老師 AI 圍棋教學平台首頁">
         <span class="brand-symbol" aria-hidden="true"><i></i><b></b></span>
         <span class="brand-text">
           <strong>Joy Go Platform</strong>
@@ -28,40 +28,38 @@
         </span>
       </a>
 
-      <nav class="main-nav" aria-label="主要導覽">
-        <a href="#about">朱老師</a>
-        <a href="#features">教學特色</a>
-        <a href="#courses">課程</a>
-        <a href="#events">活動</a>
-        <a href="#contact">聯絡</a>
-        <a class="nav-register" href="#register">立即報名</a>
-      </nav>
-
-      <button id="menuButton" class="menu-button" type="button" aria-label="開啟選單" aria-expanded="false" aria-controls="mobileDrawer">
-        <span class="menu-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+      <button class="menu-button" aria-label="開啟主選單" type="button" aria-expanded="false" aria-controls="mainNav">
+        <span></span><span></span><span></span>
         <em>選單</em>
       </button>
+
+      <nav id="mainNav" class="main-nav" aria-label="主要導覽">
+        <a href="#about" data-section="about"><span class="drawer-icon">師</span><span>朱老師</span></a>
+        <a href="#courses" data-section="courses"><span class="drawer-icon">課</span><span>課程</span></a>
+        <a href="#events" data-section="events"><span class="drawer-icon">活</span><span>活動</span></a><a href="#news" data-section="news"><span class="drawer-icon">新</span><span>最新消息</span></a>
+        <a href="#results" data-section="results"><span class="drawer-icon">特</span><span>教學特色</span></a><a href="#gallery" data-section="gallery"><span class="drawer-icon">相</span><span>相簿</span></a><a href="#testimonials" data-section="testimonials"><span class="drawer-icon">證</span><span>學員見證</span></a>
+        <a href="#faq" data-section="faq"><span class="drawer-icon">問</span><span>常見問題</span></a>
+        <a class="nav-contact" href="#register">立即報名</a>
+      </nav>
     </div>
   </header>
 
   <div id="drawerBackdrop" class="drawer-backdrop" hidden></div>
-  <aside id="mobileDrawer" class="mobile-drawer" aria-hidden="true" aria-label="行動版選單">
+  <aside id="mobileDrawer" class="mobile-drawer" aria-label="行動版選單" aria-hidden="true">
     <div class="drawer-header">
-      <div class="drawer-brand">
-        <span class="drawer-brand-mark" aria-hidden="true"></span>
-        <div>
-          <strong>Joy Go Platform</strong>
-          <small>朱老師 AI 圍棋教學</small>
-        </div>
-      </div>
+      <div class="drawer-brand"><span class="drawer-brand-mark" aria-hidden="true"></span><div><strong>Joy Go Platform</strong>
+        <small>朱老師 AI 圍棋教學</small></div></div>
       <button id="drawerClose" class="drawer-close" type="button" aria-label="關閉選單">×</button>
     </div>
     <nav class="drawer-nav" aria-label="行動版主要導覽">
-      <a href="#about">朱老師</a>
-      <a href="#features">教學特色</a>
-      <a href="#courses">課程</a>
-      <a href="#events">活動</a>
-      <a href="#contact">聯絡</a>
+      <a href="#about" data-section="about"><span class="drawer-icon">師</span><span>朱老師</span></a>
+      <a href="#courses" data-section="courses"><span class="drawer-icon">課</span><span>課程</span></a>
+      <a href="#events" data-section="events"><span class="drawer-icon">活</span><span>活動</span></a>
+      <a href="#news" data-section="news"><span class="drawer-icon">新</span><span>最新消息</span></a>
+      <a href="#results" data-section="results"><span class="drawer-icon">特</span><span>教學特色</span></a>
+      <a href="#gallery" data-section="gallery"><span class="drawer-icon">相</span><span>相簿</span></a>
+      <a href="#testimonials" data-section="testimonials"><span class="drawer-icon">證</span><span>學員見證</span></a>
+      <a href="#faq" data-section="faq"><span class="drawer-icon">問</span><span>常見問題</span></a>
       <a class="drawer-register" href="#register">立即報名</a>
     </nav>
     <div class="drawer-contact">
@@ -70,21 +68,65 @@
     </div>
   </aside>
 
+
   <main id="main">
-    <section id="home" class="hero-section">
-      <div class="container">
-        <div class="hero-image-wrap">
-          <img src="hero-main.png" alt="朱老師 AI 圍棋教學平台首頁主視覺" class="hero-image">
+    
+    <section class="hero hero-build008" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">JOY GO PLATFORM · BUILD 008</p>
+          <h1>AI 幫你找到<br><span>真正進步的方法</span></h1>
+          <p class="hero-lead">30+ 年教學經驗 × AI 圍棋分析 × 個人化教學。從零基礎、級位扎根，到段位突破與高段實戰，建立能真正運用在對局中的思考流程。</p>
+          <div class="hero-actions">
+            <a class="button button-gold" href="#register">預約體驗課程</a>
+            <a class="button button-ghost" href="#courses">查看課程內容</a>
+          </div>
+          <div class="hero-trust">
+            <span>應昌期圍棋教育基金會講師</span>
+            <span>野狐 9D</span>
+            <span>兒童・成人皆可</span>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-photo-card">
+            <div class="hero-photo" role="img" aria-label="朱老師教學形象照">
+              <div class="photo-placeholder">
+                <strong>朱老師教學形象</strong>
+                <span>上傳 teacher.jpg 即可顯示真人照片</span>
+              </div>
+            </div>
+            <div class="hero-quote">
+              <span>今日 AI 圍棋觀念</span>
+              <strong>領先時選擇簡明，落後時尋找變化。</strong>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
+
+    <section class="metric-strip" aria-label="教學資歷摘要">
+      <div class="container metric-grid">
+        <div><strong>30+</strong><span>年教學經驗</span></div>
+        <div><strong>9D</strong><span>野狐棋力</span></div>
+        <div><strong>1對1</strong><span>量身規劃</span></div>
+        <div><strong>跨裝置</strong><span>手機・平板・電腦</span></div>
+      </div>
+    </section>
+
+    
     <section id="about" class="section teacher-section">
       <div class="container teacher-grid">
+        <div class="teacher-photo-wrap">
+          <div class="teacher-photo-large">
+            <span>teacher.jpg</span>
+          </div>
+          <div class="teacher-badge">朱老師・圍棋教學 30+ 年</div>
+        </div>
         <div class="teacher-copy">
           <p class="section-label">ABOUT THE TEACHER</p>
-          <h1>從棋力診斷開始，安排真正適合你的學習方向。</h1>
-          <p>朱老師長期投入兒童、成人與段位棋友教學，重視每位學員的棋風、思考習慣與實戰問題。課程不只講答案，更著重建立「如何判斷下一手」的完整流程，幫助學員從基本功一路走向實戰突破。</p>
+          <h2>從棋力診斷開始，安排真正適合你的學習方向。</h2>
+          <p>朱老師長期投入兒童、成人與段位棋友教學，重視每位學員的棋風、思考習慣與實戰問題。課程不只講答案，更著重建立「如何判斷下一手」的完整流程。</p>
           <div class="credential-grid">
             <div><strong>30+</strong><span>年教學經驗</span></div>
             <div><strong>9D</strong><span>野狐實戰棋力</span></div>
@@ -98,31 +140,29 @@
             <span>AI 解盤與比賽策略</span>
           </div>
         </div>
-        <div class="teacher-side-card">
-          <div class="side-card-top">
-            <span>朱老師・圍棋教學 30+ 年</span>
-          </div>
-          <img src="hero-main.png" alt="朱老師教學形象照" class="side-card-image">
-          <div class="side-card-bottom">
-            <strong>朱老師 AI 圍棋教學</strong>
-            <p>應昌期圍棋教育基金會講師・野狐 9D</p>
-          </div>
-        </div>
       </div>
     </section>
 
-    <section id="features" class="section section-green">
+
+
+    <section id="highlights" class="section highlights-section">
       <div class="container">
-        <div class="section-heading centered">
-          <p class="section-label light">TEACHING METHOD</p>
-          <h2>四大教學核心</h2>
-          <p>從看懂局面到比賽實戰，建立可長期累積的學習系統。</p>
-        </div>
-        <div class="feature-grid">
-          <article class="feature-card"><span>01</span><h3>棋力診斷</h3><p>從棋譜、棋風、常犯錯誤與學習目標，找出最需要改善的環節。</p></article>
-          <article class="feature-card"><span>02</span><h3>AI 解盤</h3><p>不只看勝率，將 AI 變化整理成實戰可理解、可重複使用的原則。</p></article>
-          <article class="feature-card"><span>03</span><h3>指導棋</h3><p>在實戰中修正方向、攻守選擇、計算習慣與時間分配。</p></article>
-          <article class="feature-card"><span>04</span><h3>升段計畫</h3><p>依階段安排死活、手筋、布局、官子與比賽訓練，逐步突破瓶頸。</p></article>
+        <div class="highlight-grid">
+          <article class="highlight-card">
+            <span class="highlight-number">30+</span>
+            <h3>年教學經驗</h3>
+            <p>從兒童啟蒙、成人學棋到高段實戰，建立可長期進步的思考流程。</p>
+          </article>
+          <article class="highlight-card">
+            <span class="highlight-number">AI</span>
+            <h3>現代圍棋觀念</h3>
+            <p>把複雜的 AI 變化整理成實戰能使用的方向、判斷與原則。</p>
+          </article>
+          <article class="highlight-card">
+            <span class="highlight-number">1對1</span>
+            <h3>個人棋力診斷</h3>
+            <p>依棋譜、棋風與目標安排訓練，不用盲目刷題或背定石。</p>
+          </article>
         </div>
       </div>
     </section>
@@ -130,15 +170,19 @@
     <section id="courses" class="section section-cream">
       <div class="container">
         <div class="section-heading">
-          <div>
-            <p class="section-label">COURSES</p>
-            <h2>依棋力與目標安排課程</h2>
-          </div>
+          <div><p class="section-label">COURSES</p><h2>依棋力與目標安排課程</h2></div>
           <p>實體與線上皆可洽詢；課程可採一對一、小班或活動講座。</p>
         </div>
 
+        <div class="course-filter" role="group" aria-label="課程分類篩選">
+          <button type="button" class="active" data-filter="all">全部課程</button>
+          <button type="button" data-filter="beginner">初學</button>
+          <button type="button" data-filter="rank">級位・段位</button>
+          <button type="button" data-filter="advanced">高段・AI</button><button type="button" data-filter="personal">一對一</button>
+        </div>
+        <p id="courseFilterStatus" class="filter-status" aria-live="polite">目前顯示全部課程</p>
         <div class="course-grid">
-          <article class="course-card">
+          <article class="course-card" data-category="beginner">
             <span class="course-index">01</span>
             <p class="course-level">零基礎・入門</p>
             <h3>初學啟蒙課程</h3>
@@ -148,22 +192,24 @@
               <li>圍棋禮儀與基本觀念</li>
               <li>兒童、成人皆適合</li>
             </ul>
+            <a href="#register">詢問入門課程</a>
           </article>
 
-          <article class="course-card featured">
+          <article class="course-card course-featured" data-category="rank">
             <span class="popular">熱門課程</span>
             <span class="course-index">02</span>
             <p class="course-level">級位・段位</p>
             <h3>棋力突破課程</h3>
-            <p>針對布局、攻防、死活與計算瓶頸，建立清楚的進步方向。</p>
+            <p>針對布局、攻防、死活與計算的瓶頸，建立明確進步方向。</p>
             <ul>
               <li>實戰棋譜重點檢討</li>
               <li>個人弱點與訓練計畫</li>
               <li>段位上達觀念與技巧</li>
             </ul>
+            <a href="#register">預約棋力評估</a>
           </article>
 
-          <article class="course-card">
+          <article class="course-card" data-category="advanced">
             <span class="course-index">03</span>
             <p class="course-level">1 段～6 段</p>
             <h3>AI 高段進階指導</h3>
@@ -173,9 +219,10 @@
               <li>高段指導棋與複盤</li>
               <li>比賽策略與時間管理</li>
             </ul>
+            <a href="#register">洽詢高段課程</a>
           </article>
-
-          <article class="course-card">
+        
+          <article class="course-card reveal" data-category="personal">
             <span class="course-index">04</span>
             <p class="course-level">個人化</p>
             <h3>一對一棋力診斷</h3>
@@ -185,122 +232,224 @@
               <li>弱點與訓練順序</li>
               <li>實體或線上皆可</li>
             </ul>
+            <a href="#register">預約棋力評估</a>
+          </article>
+</div>
+      </div>
+    </section>
+
+    
+    <section id="events" class="section events-section">
+      <div class="container">
+        <div class="section-heading">
+          <div><p class="section-label">EVENTS</p><h2>近期教學與棋友活動</h2></div>
+          <p>活動日期與名額可透過電話或報名表洽詢。</p>
+        </div>
+        <div class="event-list">
+          <article class="event-card"><div class="event-date"><strong>週六</strong><span>15:00</span></div><div><small>固定活動</small><h3>朱老師指導棋</h3><p>實戰對局、重點複盤、AI 觀念解析。</p></div><a href="#register">我要參加</a></article>
+          <article class="event-card"><div class="event-date"><strong>預約</strong><span>時段</span></div><div><small>一對一</small><h3>個人棋力診斷與突破</h3><p>依棋譜、棋風與目標安排專屬訓練內容。</p></div><a href="#register">預約評估</a></article>
+          <article class="event-card"><div class="event-date"><strong>不定期</strong><span>舉辦</span></div><div><small>講座・棋聚</small><h3>AI 圍棋講座與棋友交流</h3><p>介紹現代布局、段位提升與實戰觀念。</p></div><a href="#register">洽詢活動</a></article>
+        </div>
+      </div>
+    </section>
+
+
+    
+    <section id="results" class="section method-section">
+      <div class="container">
+        <div class="section-heading">
+          <div><p class="section-label">TEACHING METHOD</p><h2>四大教學核心</h2></div>
+          <p>從看懂局面到比賽實戰，建立可長期累積的學習系統。</p>
+        </div>
+        <div class="method-grid">
+          <article class="method-card"><span>01</span><h3>棋力診斷</h3><p>從棋譜、棋風、常犯錯誤與學習目標找出最需要改善的環節。</p></article>
+          <article class="method-card"><span>02</span><h3>AI 解盤</h3><p>不只看勝率，將 AI 變化整理成實戰可理解、可重複使用的原則。</p></article>
+          <article class="method-card"><span>03</span><h3>指導棋</h3><p>在實戰中修正方向、攻守選擇、計算習慣與時間分配。</p></article>
+          <article class="method-card"><span>04</span><h3>升段計畫</h3><p>依階段安排死活、手筋、布局、官子與比賽訓練，追蹤進度。</p></article>
+        </div>
+      </div>
+    </section>
+
+
+
+    
+    <section id="news" class="section news-section">
+      <div class="container">
+        <div class="section-heading">
+          <div><p class="section-label">LATEST NEWS</p><h2>最新消息</h2></div>
+          <p>招生、講座、棋聚與暑期特訓資訊都集中在這裡。</p>
+        </div>
+        <div class="news-grid">
+          <article class="news-card news-feature">
+            <div class="news-photo photo-news-1"><span>news1.jpg</span></div>
+            <div class="news-content"><span class="news-tag">暑期招生</span><h3>暑假段位特訓班</h3><p>一週密集訓練，包含實戰、解盤、AI 觀念、定石與死活。</p><a href="#register">了解與報名</a></div>
+          </article>
+          <article class="news-card">
+            <div class="news-photo photo-news-2"><span>news2.jpg</span></div>
+            <div class="news-content"><span class="news-tag">固定活動</span><h3>週六朱老師指導棋</h3><p>實戰對局、重點複盤與 AI 觀念解析，適合級位與段位棋友。</p><a href="#events">查看活動</a></div>
+          </article>
+          <article class="news-card">
+            <div class="news-photo photo-news-3"><span>news3.jpg</span></div>
+            <div class="news-content"><span class="news-tag">圍棋講座</span><h3>段位提升與比賽策略</h3><p>從布局方向、攻防選擇到時間管理，建立比賽實戰流程。</p><a href="#register">預約通知</a></div>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="events" class="section events-section">
+
+    <section id="gallery" class="section gallery-section">
       <div class="container">
         <div class="section-heading">
-          <div>
-            <p class="section-label">EVENTS</p>
-            <h2>近期教學與棋友活動</h2>
-          </div>
-          <p>活動日期與名額可透過電話或報名表洽詢。</p>
+          <div><p class="section-label light">GALLERY</p><h2>教學現場與棋友活動</h2></div>
+          <p>將 gallery1.jpg～gallery4.jpg 上傳到 GitHub 根目錄，即可顯示真實教學與活動照片。</p>
         </div>
-        <div class="event-list">
-          <article class="event-card">
-            <div class="event-date"><strong>週六</strong><span>15:00</span></div>
-            <div><small>固定活動</small><h3>朱老師指導棋</h3><p>實戰對局、重點複盤、AI 觀念解析。</p></div>
-          </article>
-          <article class="event-card">
-            <div class="event-date"><strong>預約</strong><span>時段</span></div>
-            <div><small>一對一</small><h3>個人棋力診斷與突破</h3><p>依棋譜、棋風與目標安排專屬訓練內容。</p></div>
-          </article>
-          <article class="event-card">
-            <div class="event-date"><strong>不定期</strong><span>舉辦</span></div>
-            <div><small>講座・棋聚</small><h3>AI 圍棋講座與棋友交流</h3><p>介紹現代布局、段位提升與實戰觀念。</p></div>
-          </article>
+        <div class="gallery-grid">
+          <button class="gallery-item gallery-large" type="button" data-image="gallery1.jpg" data-title="朱老師教學現場"><div class="gallery-photo gp1"></div><span>朱老師教學現場</span></button>
+          <button class="gallery-item" type="button" data-image="gallery2.jpg" data-title="棋聚交流"><div class="gallery-photo gp2"></div><span>棋聚交流</span></button>
+          <button class="gallery-item" type="button" data-image="gallery3.jpg" data-title="AI 解盤講座"><div class="gallery-photo gp3"></div><span>AI 解盤講座</span></button>
+          <button class="gallery-item" type="button" data-image="gallery4.jpg" data-title="學生實戰"><div class="gallery-photo gp4"></div><span>學生實戰</span></button>
         </div>
+      </div>
+    </section>
+
+
+    <section id="testimonials" class="section testimonials-section">
+      <div class="container">
+        <div class="section-heading">
+          <div><p class="section-label">STUDENT STORIES</p><h2>學員與家長回饋</h2></div>
+          <p>以下為示範內容，之後可替換成真實學生心得與升段紀錄。</p>
+        </div>
+        <div class="testimonial-grid">
+          <article class="testimonial-card"><div class="stars">★★★★★</div><blockquote>老師會直接指出最重要的問題，讓我每次上課後都知道下一步要練什麼。</blockquote>
+  <div class="floating-contact" aria-label="快速聯絡">
+    <a class="float-phone" href="tel:0931399910" aria-label="電話洽詢">電話</a>
+    <a class="float-line" href="#register" aria-label="LINE 與報名">LINE</a>
+  </div>
+
+  <button id="backToTop" class="back-to-top" type="button" aria-label="回到頁首">↑</button>
+  
+  <footer class="site-footer footer-build008">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <strong>Joy Go Platform</strong>
+        <p>朱老師 AI 圍棋教學平台</p>
+        <span>從入門到高段，建立真正能用在實戰中的思考能力。</span>
+      </div>
+      <div><h4>聯絡方式</h4><a href="tel:0931399910">0931-399-910</a><p>電話・簡訊・LINE 洽詢</p><p>Email：可於下一版加入</p></div>
+      <div><h4>教學地區</h4><p>汐止・南港・內湖及線上</p><p>兒童、成人、級位、段位與高段</p></div>
+      <div><h4>快速連結</h4><a href="#courses">課程</a><a href="#events">活動</a><a href="#gallery">相簿</a><a href="#register">立即報名</a></div>
+    </div>
+    <div class="container footer-bottom"><span>© 2026 朱老師 AI 圍棋教學平台</span><span>網站版本 Build 009</span></div>
+  </footer>
+</article>
+          <article class="testimonial-card"><div class="stars">★★★★★</div><blockquote>孩子開始會觀察全局，也更願意自己檢討對局，專注力和思考方式都有進步。</blockquote><button id="backToTop" class="back-to-top" type="button" aria-label="回到頁首">↑</button>
+  <footer><strong>兒童班家長</strong><span>棋感、專注與思考流程提升</span></footer></article>
+          <article class="testimonial-card"><div class="stars">★★★★★</div><blockquote>朱老師會把複雜的 AI 變化整理成容易理解的原則，真正能用在比賽中。</blockquote><button id="backToTop" class="back-to-top" type="button" aria-label="回到頁首">↑</button>
+  <footer><strong>高段進階學員</strong><span>AI 觀念與比賽策略訓練</span></footer></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section section-cream">
+      <div class="container faq-grid">
+        <div class="reveal">
+          <p class="section-label">FAQ</p>
+          <h2>常見問題</h2>
+          <p>還不確定適合哪一種課程，可以先提供年齡、目前棋力與學習目標。</p>
+        </div>
+        <div class="accordion">
+          <details open>
+            <summary>完全沒有學過，也可以報名嗎？</summary>
+            <p>可以。初學課會從規則與 9 路棋盤開始，依學習速度逐步進入完整對局。</p>
+          </details>
+          <details>
+            <summary>成人初學會不會太晚？</summary>
+            <p>不會。成人通常理解力強，只要課程節奏適合，也能很快建立完整基本觀念。</p>
+          </details>
+          <details>
+            <summary>可以用 iPad 或手機線上上課嗎？</summary>
+            <p>可以。網站與聯絡流程支援 iPad、iPhone、Android、Windows 與 Mac。</p>
+          </details>
+          <details>
+            <summary>段位學員主要上什麼內容？</summary>
+            <p>會依棋譜檢討布局方向、攻防選擇、死活計算、厚薄與形勢判斷，並加入 AI 觀念。</p>
+          </details>
+        
+          <details>
+            <summary>多久可以看到棋力進步？</summary>
+            <p>依目前棋力、上課頻率與課後練習而不同。課程會先建立可執行的訓練方向，再逐步追蹤實戰成果。</p>
+          </details>
+          <details>
+            <summary>AI 教學和一般教學有什麼不同？</summary>
+            <p>AI 提供大量變化與判斷依據，朱老師會把複雜內容整理成容易理解、能在實戰使用的原則。</p>
+          </details>
+</div>
       </div>
     </section>
 
     <section id="register" class="section register-section">
       <div class="container register-grid">
-        <div>
-          <p class="section-label">REGISTER</p>
-          <h2>課程報名與 LINE 洽詢</h2>
-          <p>填寫簡單資料後，可直接產生報名內容，再用 LINE、簡訊或複製文字傳給朱老師。</p>
-          <div class="register-direct">
-            <a href="tel:0931399910">電話 0931-399-910</a>
-            <a href="sms:0931399910">傳送簡訊</a>
+        <div class="register-copy">
+          <p class="section-label light">CONTACT & REGISTER</p>
+          <h2>先聊聊您的棋力<br>與學習目標。</h2>
+          <p>填好資料後按「產生報名內容」，可直接複製並用電話、簡訊或 LINE 傳給朱老師。</p>
+          <div class="contact-buttons">
+            <a class="button button-gold" href="tel:0931399910">撥打 0931-399-910</a>
+            <a class="button button-dark-ghost" href="sms:0931399910">傳送簡訊</a><a class="button button-line" href="#" id="lineButton">LINE 洽詢</a>
           </div>
         </div>
+
         <form id="registerForm" class="register-form">
-          <label>姓名<input id="regName" type="text" placeholder="請輸入姓名" required></label>
-          <label>聯絡電話<input id="regPhone" type="tel" inputmode="tel" placeholder="例如：0912-345-678" required></label>
-          <label>目前棋力
-            <select id="regLevel" required>
+          <label>姓名<input id="name" type="text" required placeholder="請輸入姓名"></label>
+          <label>聯絡電話<input id="phone" type="tel" required inputmode="tel" placeholder="例如：0912-345-678"></label>
+          <label>LINE 顯示名稱<input id="lineName" type="text" placeholder="選填"></label><label>目前棋力
+            <select id="level" required>
               <option value="">請選擇</option>
-              <option>完全初學</option><option>級位</option><option>1～3 段</option><option>4～6 段</option><option>高段</option>
+              <option>零基礎</option><option>20級～10級</option><option>9級～1級</option>
+              <option>1段～3段</option><option>4段～6段</option>
             </select>
           </label>
           <label>課程需求
-            <select id="regCourse" required>
+            <select id="course" required>
               <option value="">請選擇</option>
-              <option>初學啟蒙課程</option><option>棋力突破課程</option><option>AI 高段進階指導</option><option>一對一棋力診斷</option><option>棋聚或講座</option>
+              <option>初學啟蒙課程</option><option>棋力突破課程</option>
+              <option>AI 高段進階指導</option><option>一對一指導棋</option><option>棋聚或講座活動</option>
             </select>
           </label>
-          <label class="full">其他需求<textarea id="regNote" rows="4" placeholder="例如：希望週六下午上課"></textarea></label>
-          <div class="register-actions full">
-            <button id="copyRegister" type="button">複製報名內容</button>
-            <a id="lineRegister" href="#">LINE 傳送</a>
-            <a id="smsRegister" href="sms:0931399910">簡訊傳送</a>
+          <label class="full">其他需求<textarea id="message" rows="4" placeholder="例如：希望週六下午上課"></textarea></label>
+          <button class="submit-button full" type="submit">產生並複製報名內容</button><p class="privacy-note">送出前不會上傳資料；按鈕只會在您的裝置產生可複製文字。</p>
+          <div id="resultBox" class="result-box full" hidden>
+            <p id="resultText"></p>
+            <div>
+              <button id="copyAgain" type="button">再次複製</button>
+              <a id="smsLink" href="sms:0931399910">用簡訊傳送</a>
+            </div>
           </div>
-          <p id="registerStatus" class="register-status full" aria-live="polite"></p>
+          <p id="formStatus" class="form-status full" aria-live="polite"></p>
         </form>
-      </div>
-    </section>
-
-    <section id="contact" class="section contact-section">
-      <div class="container contact-grid">
-        <div>
-          <p class="section-label light">CONTACT</p>
-          <h2>先聊聊您的棋力與學習目標</h2>
-          <p>歡迎透過電話、簡訊或 LINE 洽詢。若要安排課程，可先提供年齡、目前棋力與想提升的方向。</p>
-        </div>
-        <div class="contact-card">
-          <a class="contact-button phone" href="tel:0931399910">撥打 0931-399-910</a>
-          <a class="contact-button sms" href="sms:0931399910">傳送簡訊</a>
-          <button id="shareButton" class="contact-button share" type="button">分享網站</button>
-          <p class="contact-note">教學地區：汐止・南港・內湖及線上</p>
-        </div>
       </div>
     </section>
   </main>
 
-  <div class="quick-actions" aria-label="快速聯絡">
-    <a class="quick-phone" href="tel:0931399910">電話</a>
-    <a class="quick-line" href="#register">LINE</a>
-    <a class="quick-register" href="#register">報名</a>
+  <div class="mobile-bar">
+    <a href="tel:0931399910">電話洽詢</a>
+    <a href="#register">線上報名</a>
   </div>
-  <div class="mobile-action-bar">
-    <a href="tel:0931399910">電話</a>
-    <a href="#register">LINE</a>
-    <a href="#register">立即報名</a>
+
+
+  <div id="galleryLightbox" class="lightbox" hidden role="dialog" aria-modal="true">
+    <button id="lightboxClose" type="button" aria-label="關閉">×</button>
+    <div class="lightbox-content"><img id="lightboxImage" alt=""><p id="lightboxTitle"></p></div>
   </div>
+  <div class="share-float"><button id="shareSite" type="button">分享網站</button><a href="#register">立即報名</a></div>
 
   <button id="backToTop" class="back-to-top" type="button" aria-label="回到頁首">↑</button>
-
-  <footer class="site-footer">
+  <footer>
     <div class="container footer-grid">
-      <div>
-        <strong>Joy Go Platform</strong>
-        <p>朱老師 AI 圍棋教學平台</p>
-      </div>
-      <div>
-        <span>電話</span>
-        <a href="tel:0931399910">0931-399-910</a>
-      </div>
-      <div>
-        <span>教學地區</span>
-        <p>汐止・南港・內湖及線上</p>
-      </div>
-      <div>
-        <span>網站版本</span>
-        <p>Build 010.7</p>
-      </div>
+      <div><strong>Joy Go Platform</strong><p>朱老師 AI 圍棋教學平台</p></div>
+      <div><span>電話</span><a href="tel:0931399910">0931-399-910</a></div>
+      <div><span>教學地區</span><p>汐止・南港・內湖及線上</p></div>
+      <div><span>網站版本</span><p>Build 009</p></div>
     </div>
     <div class="container copyright">© <span id="year"></span> 朱老師 AI 圍棋教學平台</div>
   </footer>
