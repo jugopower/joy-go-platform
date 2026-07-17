@@ -211,7 +211,34 @@ LINE 顯示名稱：${lineName || "未填"}
     });
   }
 
-  // Gallery lightbox.
+
+  // Build 011.5: render editable content from data.js.
+  const siteData = window.JOY_GO_DATA || {};
+
+  const experienceGrid = byId("experienceGrid");
+  if (experienceGrid && Array.isArray(siteData.teacherExperience)) {
+    experienceGrid.innerHTML = siteData.teacherExperience.map((item, index) => `
+      <article class="experience-card">
+        <span>${String(index + 1).padStart(2, "0")}</span>
+        <strong>${item.badge || ""}</strong>
+        <h3>${item.title || ""}</h3>
+        <p>${item.description || ""}</p>
+      </article>
+    `).join("");
+  }
+
+  const galleryGrid = byId("galleryGrid");
+  if (galleryGrid && Array.isArray(siteData.gallery)) {
+    galleryGrid.innerHTML = siteData.gallery.map((item, index) => `
+      <button class="gallery-item${item.large ? " gallery-large" : ""}" type="button"
+        data-image="${item.image || ""}" data-title="${item.title || "活動相片"}">
+        <div class="gallery-photo gallery-data-photo" style="background-image:linear-gradient(145deg,rgba(27,68,49,.45),rgba(181,139,76,.45)),url('${item.image || ""}')"></div>
+        <span>${item.title || `活動相片 ${index + 1}`}</span>
+      </button>
+    `).join("");
+  }
+
+    // Gallery lightbox.
   const lightbox = byId("galleryLightbox");
   const lightboxImage = byId("lightboxImage");
   const lightboxTitle = byId("lightboxTitle");

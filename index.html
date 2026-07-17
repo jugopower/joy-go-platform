@@ -8,7 +8,7 @@
   <meta property="og:title" content="朱老師 AI 圍棋教學平台">
   <meta property="og:description" content="30+年教學經驗 × AI圍棋觀念 × 段位進階指導">
   <meta property="og:type" content="website">
-  <title>朱老師 AI 圍棋教學平台｜Joy Go Platform Build 011.4</title>
+  <title>朱老師 AI 圍棋教學平台｜Joy Go Platform Build 011.5</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet">
@@ -72,7 +72,7 @@
   <main id="main">
     <section class="hero-image-section" id="home" aria-label="朱老師 AI 圍棋教學首頁">
       <div class="hero-image-wrap">
-        <img src="hero.jpg" alt="朱老師 AI 圍棋教學，30年以上教學經驗、AI 圍棋分析與個人化教學">
+        <img src="images/hero/hero.jpg" alt="朱老師 AI 圍棋教學，30年以上教學經驗、AI 圍棋分析與個人化教學">
       </div>
     </section>
 
@@ -132,14 +132,7 @@
           </div>
           <p>從兒童啟蒙、段位突破到高段實戰，累積多年教學、講座與比賽指導經驗。</p>
         </div>
-        <div class="experience-grid">
-          <article class="experience-card"><span>01</span><strong>30+ 年</strong><h3>圍棋教學經驗</h3><p>長期教授兒童、成人、級位與段位棋友，重視思考流程與實戰應用。</p></article>
-          <article class="experience-card"><span>02</span><strong>講師</strong><h3>應昌期圍棋教育基金會</h3><p>推廣正確圍棋觀念，結合系統化教材、指導棋與實戰複盤。</p></article>
-          <article class="experience-card"><span>03</span><strong>9D</strong><h3>野狐高段實戰棋力</h3><p>持續透過高段對局維持實戰感，將布局、攻防與形勢判斷帶入教學。</p></article>
-          <article class="experience-card"><span>04</span><strong>多校</strong><h3>校園社團教學經歷</h3><p>曾於大專院校與國小圍棋社團授課，具備不同年齡層的教學經驗。</p></article>
-          <article class="experience-card"><span>05</span><strong>AI</strong><h3>現代圍棋觀念解盤</h3><p>把 AI 變化整理為容易理解、能重複運用的方向、原則與訓練重點。</p></article>
-          <article class="experience-card"><span>06</span><strong>實戰</strong><h3>講座、指導棋與賽事訓練</h3><p>規劃段位講座、指導棋、AI 挑戰與比賽訓練，協助棋友突破瓶頸。</p></article>
-        </div>
+        <div id="experienceGrid" class="experience-grid" aria-live="polite"></div>
         <p class="experience-note">正式比賽名次與學員升段紀錄，可於資料確認後逐筆補充。</p>
       </div>
     </section>
@@ -300,14 +293,9 @@
       <div class="container">
         <div class="section-heading">
           <div><p class="section-label light">GALLERY</p><h2>教學現場與棋友活動</h2></div>
-          <p>將 gallery1.jpg～gallery4.jpg 上傳到 GitHub 根目錄，即可顯示真實教學與活動照片。</p>
+          <p>將照片上傳至 images/gallery/，再於 data.js 修改檔名與標題，即可更新相簿。</p>
         </div>
-        <div class="gallery-grid">
-          <button class="gallery-item gallery-large" type="button" data-image="gallery1.jpg" data-title="朱老師教學現場"><div class="gallery-photo gp1"></div><span>朱老師教學現場</span></button>
-          <button class="gallery-item" type="button" data-image="gallery2.jpg" data-title="棋聚交流"><div class="gallery-photo gp2"></div><span>棋聚交流</span></button>
-          <button class="gallery-item" type="button" data-image="gallery3.jpg" data-title="AI 解盤講座"><div class="gallery-photo gp3"></div><span>AI 解盤講座</span></button>
-          <button class="gallery-item" type="button" data-image="gallery4.jpg" data-title="學生實戰"><div class="gallery-photo gp4"></div><span>學生實戰</span></button>
-        </div>
+        <div id="galleryGrid" class="gallery-grid" aria-live="polite"></div>
       </div>
     </section>
 
@@ -445,11 +433,12 @@
       <div><strong>Joy Go Platform</strong><p>朱老師 AI 圍棋教學平台</p></div>
       <div><span>電話</span><a href="tel:0931399910">0931-399-910</a></div>
       <div><span>教學地區</span><p>汐止・南港・內湖及線上</p></div>
-      <div><span>網站版本</span><p>Build 011.4</p></div>
+      <div><span>網站版本</span><p>Build 011.5</p></div>
     </div>
     <div class="container copyright">© <span id="year"></span> 朱老師 AI 圍棋教學平台</div>
   </footer>
 
+  <script src="data.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
