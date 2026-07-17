@@ -212,7 +212,7 @@ LINE 顯示名稱：${lineName || "未填"}
   }
 
 
-  // Build 011.6: render editable content from data.js.
+  // Build 011.7: render editable content from data.js.
   const siteData = window.JOY_GO_DATA || {};
 
   const experienceGrid = byId("experienceGrid");
@@ -238,32 +238,54 @@ LINE 顯示名稱：${lineName || "未填"}
     `).join("");
   }
 
-    // Gallery lightbox.
+  // Build 011.7: iPad-safe gallery lightbox.
   const lightbox = byId("galleryLightbox");
   const lightboxImage = byId("lightboxImage");
   const lightboxTitle = byId("lightboxTitle");
   const lightboxClose = byId("lightboxClose");
+  let previousOverflow = "";
 
   if (lightbox && lightboxImage && lightboxTitle) {
-    all(".gallery-item[data-image]").forEach((item) => {
-      item.addEventListener("click", () => {
-        lightboxImage.src = item.dataset.image || "";
-        lightboxImage.alt = item.dataset.title || "活動相片";
-        lightboxTitle.textContent = item.dataset.title || "";
-        lightbox.hidden = false;
-        document.body.style.overflow = "hidden";
-      });
-    });
-
-    const closeLightbox = () => {
-      lightbox.hidden = true;
-      lightboxImage.removeAttribute("src");
-      document.body.style.overflow = "";
+    const openLightbox = (item) => {
+      lightboxImage.src = item.dataset.image || "";
+      lightboxImage.alt = item.dataset.title || "活動相片";
+      lightboxTitle.textContent = item.dataset.title || "";
+      previousOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      lightbox.hidden = false;
+      lightbox.setAttribute("aria-hidden", "false");
+      requestAnimationFrame(() => lightboxClose?.focus({ preventScroll: true }));
     };
 
-    if (lightboxClose) lightboxClose.addEventListener("click", closeLightbox);
+    const closeLightbox = () => {
+      if (lightbox.hidden) return;
+      lightbox.hidden = true;
+      lightbox.setAttribute("aria-hidden", "true");
+      lightboxImage.removeAttribute("src");
+      document.body.style.overflow = previousOverflow;
+    };
+
+    all(".gallery-item[data-image]").forEach((item) => {
+      item.addEventListener("click", () => openLightbox(item));
+    });
+
+    lightboxClose?.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      closeLightbox();
+    });
+
     lightbox.addEventListener("click", (event) => {
-      if (event.target === lightbox) closeLightbox();
+      if (event.target === lightbox || event.target === lightboxImage) closeLightbox();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeLightbox();
+    });
+
+    window.addEventListener("pagehide", closeLightbox);
+    window.addEventListener("pageshow", () => {
+      if (lightbox.hidden) document.body.style.overflow = "";
     });
   }
 

@@ -1,5 +1,5 @@
 /*
-  Joy Go Platform Build 011.6
+  Joy Go Platform Build 011.7
   日後修改「朱老師教學經歷與實戰成果」或相簿，只需要編輯此檔案。
   文字請保留引號與逗號；圖片請直接上傳到 GitHub 根目錄。
 */

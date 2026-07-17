@@ -1699,3 +1699,60 @@ body>footer .footer-grid p,body>footer .footer-grid a{overflow-wrap:normal!impor
 .experience-note{margin:22px 0 0;color:var(--muted);font-size:13px;text-align:right}
 @media(max-width:920px){.experience-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:620px){.experience-grid{grid-template-columns:1fr}.experience-card{min-height:auto}.experience-note{text-align:left}}
+
+/* Build 011.7 — iPad-safe gallery preview */
+.lightbox{
+  z-index:99999!important;
+  overflow:auto;
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+  padding:max(84px,calc(env(safe-area-inset-top) + 72px)) 24px max(34px,env(safe-area-inset-bottom));
+}
+.lightbox-content{
+  position:relative;
+  width:min(1000px,94vw);
+  max-height:none;
+  margin:auto;
+}
+.lightbox-content img{
+  display:block;
+  width:auto;
+  max-width:100%;
+  max-height:calc(100dvh - 180px);
+  margin:0 auto;
+  object-fit:contain;
+  cursor:zoom-out;
+  touch-action:manipulation;
+}
+#lightboxClose{
+  position:fixed!important;
+  top:max(18px,calc(env(safe-area-inset-top) + 10px))!important;
+  right:max(18px,calc(env(safe-area-inset-right) + 12px))!important;
+  z-index:100001!important;
+  width:auto!important;
+  min-width:112px;
+  height:54px!important;
+  padding:0 18px!important;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  border:2px solid rgba(17,59,43,.18)!important;
+  border-radius:999px!important;
+  background:#fff!important;
+  color:#123b2b!important;
+  box-shadow:0 10px 30px rgba(0,0,0,.3);
+  font-size:30px!important;
+  font-weight:900;
+  line-height:1;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+#lightboxClose em{font-style:normal;font-size:17px;line-height:1}
+#lightboxClose:focus-visible{outline:4px solid #d2a447;outline-offset:3px}
+@media(max-width:620px){
+  .lightbox{padding-top:max(78px,calc(env(safe-area-inset-top) + 66px));padding-left:12px;padding-right:12px}
+  #lightboxClose{min-width:100px;height:50px!important;padding:0 14px!important}
+  #lightboxClose em{font-size:16px}
+  .lightbox-content img{max-height:calc(100dvh - 165px);border-radius:14px}
+}
