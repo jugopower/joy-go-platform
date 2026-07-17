@@ -1424,3 +1424,44 @@ body{
   .contact-toggle{width:64px;height:64px}
   .contact-action{width:56px;height:56px}
 }
+
+
+/* ===== Build 011.1 iPad navigation, footer and contact repair ===== */
+/* Do not display the full desktop nav and the menu button at the same time. */
+@media (min-width:1281px){
+  .menu-button{display:none!important}
+  .main-nav{display:flex!important}
+}
+@media (max-width:1280px){
+  .site-header{position:sticky!important;top:0!important;z-index:200!important}
+  .nav-wrap{height:82px!important}
+  .menu-button{display:flex!important;min-width:112px!important;height:58px!important}
+  .main-nav{display:none!important}
+  .brand-text strong{font-size:20px!important}
+  .brand-text small{font-size:14px!important}
+  .mobile-drawer{display:flex!important;position:fixed!important;top:0!important;right:0!important;bottom:0!important;width:min(440px,88vw)!important;z-index:230!important;transform:translateX(105%)!important;transition:transform .28s ease!important;background:#fffdf8!important;box-shadow:-24px 0 60px rgba(0,0,0,.2)!important}
+  .mobile-drawer.is-open{transform:translateX(0)!important}
+  .drawer-backdrop{display:block!important;position:fixed!important;inset:0!important;z-index:220!important;background:rgba(8,33,23,.58)!important;opacity:0!important;visibility:hidden!important;transition:.25s ease!important}
+  .drawer-backdrop.is-visible{opacity:1!important;visibility:visible!important}
+}
+/* Keep menu icon compact and readable. */
+.menu-button{flex-direction:row!important}
+.menu-button span{display:block!important;flex:0 0 29px!important}
+.menu-button em{white-space:nowrap!important}
+/* Testimonials must never inherit site-footer layout. */
+.testimonial-card footer{background:transparent!important;color:inherit!important;padding:0!important;margin-top:22px!important}
+.testimonial-card footer strong,.testimonial-card footer span{display:block!important}
+.testimonial-card footer strong{color:var(--forest)!important;font-size:17px!important}
+.testimonial-card footer span{color:var(--muted)!important;font-size:13px!important;margin-top:4px!important}
+/* Robust footer layout for iPad landscape. */
+body>footer{background:#09160f!important;color:#fff!important;padding:46px 0 28px!important}
+body>footer .footer-grid{display:grid!important;grid-template-columns:1.35fr .8fr 1fr .7fr!important;gap:28px!important;align-items:start!important}
+body>footer .footer-grid>div{min-width:0!important}
+body>footer .footer-grid p,body>footer .footer-grid a{overflow-wrap:normal!important;word-break:keep-all!important;white-space:normal!important}
+@media(max-width:960px){body>footer .footer-grid{grid-template-columns:1fr 1fr!important}}
+@media(max-width:620px){body>footer .footer-grid{grid-template-columns:1fr!important}}
+/* Contact control stays above the back-to-top button and expands upward. */
+.contact-fab{z-index:260!important;right:22px!important;bottom:24px!important}
+.contact-actions{order:-1!important}
+.back-to-top{right:104px!important;bottom:28px!important;z-index:250!important}
+@media(max-width:620px){.back-to-top{right:88px!important;bottom:22px!important}}
