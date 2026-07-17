@@ -212,8 +212,24 @@ LINE 顯示名稱：${lineName || "未填"}
   }
 
 
-  // Build 011.7: render editable content from data.js.
+  // Build 012.0: render editable content from data.js.
   const siteData = window.JOY_GO_DATA || {};
+
+  const newsGrid = byId("newsGrid");
+  if (newsGrid && Array.isArray(siteData.news)) {
+    newsGrid.innerHTML = siteData.news.map((item) => `
+      <article class="news-card${item.feature ? " news-feature" : ""}">
+        <div class="news-photo" role="img" aria-label="${item.title || "最新消息"}"
+          style="background-image:url('${item.image || ""}')"></div>
+        <div class="news-content">
+          <span class="news-tag">${item.category || "最新消息"}</span>
+          <h3>${item.title || ""}</h3>
+          <p>${item.description || ""}</p>
+          <a href="${item.link || "#register"}">${item.linkText || "了解更多"}</a>
+        </div>
+      </article>
+    `).join("");
+  }
 
   const experienceGrid = byId("experienceGrid");
   if (experienceGrid && Array.isArray(siteData.teacherExperience)) {
@@ -232,7 +248,7 @@ LINE 顯示名稱：${lineName || "未填"}
     galleryGrid.innerHTML = siteData.gallery.map((item, index) => `
       <button class="gallery-item${item.large ? " gallery-large" : ""}" type="button"
         data-image="${item.image || ""}" data-title="${item.title || "活動相片"}">
-        <div class="gallery-photo gallery-data-photo" style="background-image:linear-gradient(145deg,rgba(27,68,49,.45),rgba(181,139,76,.45)),url('${item.image || ""}')"></div>
+        <div class="gallery-photo gallery-data-photo" style="background-image:url('${item.image || ""}')"></div>
         <span>${item.title || `活動相片 ${index + 1}`}</span>
       </button>
     `).join("");

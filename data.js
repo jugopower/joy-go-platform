@@ -1,9 +1,37 @@
 /*
-  Joy Go Platform Build 011.9
-  日後修改「朱老師教學經歷與實戰成果」或相簿，只需要編輯此檔案。
+  Joy Go Platform Build 012.0
+  日後修改「最新消息」、「朱老師教學經歷與實戰成果」或相簿，只需要編輯此檔案。
   文字請保留引號與逗號；圖片請直接上傳到 GitHub 根目錄。
 */
 window.JOY_GO_DATA = {
+
+  news: [
+    {
+      image: "news1.jpg",
+      category: "暑期招生",
+      title: "暑假段位特訓班",
+      description: "一週密集訓練，包含實戰、解盤、AI 觀念、定石與死活。",
+      linkText: "了解與報名",
+      link: "#register",
+      feature: true
+    },
+    {
+      image: "news2.jpg",
+      category: "固定活動",
+      title: "週六朱老師指導棋",
+      description: "實戰對局、重點複盤與 AI 觀念解析，適合級位與段位棋友。",
+      linkText: "查看活動",
+      link: "#events"
+    },
+    {
+      image: "news3.jpg",
+      category: "圍棋講座",
+      title: "段位提升與比賽策略",
+      description: "從布局方向、攻防選擇到時間管理，建立比賽實戰流程。",
+      linkText: "預約通知",
+      link: "#register"
+    }
+  ],
   teacherExperience: [
     {
       badge: "30+ 年",

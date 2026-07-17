@@ -8,11 +8,11 @@
   <meta property="og:title" content="朱老師 AI 圍棋教學平台">
   <meta property="og:description" content="30+年教學經驗 × AI圍棋觀念 × 段位進階指導">
   <meta property="og:type" content="website">
-  <title>朱老師 AI 圍棋教學平台｜Joy Go Platform Build 011.9</title>
+  <title>朱老師 AI 圍棋教學平台｜Joy Go Platform Build 012.0</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=0119">
+  <link rel="stylesheet" href="styles.css?v=0120">
   <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
@@ -271,20 +271,7 @@
           <div><p class="section-label">LATEST NEWS</p><h2>最新消息</h2></div>
           <p>招生、講座、棋聚與暑期特訓資訊都集中在這裡。</p>
         </div>
-        <div class="news-grid">
-          <article class="news-card news-feature">
-            <div class="news-photo photo-news-1" aria-label="暑假段位特訓班活動照片"></div>
-            <div class="news-content"><span class="news-tag">暑期招生</span><h3>暑假段位特訓班</h3><p>一週密集訓練，包含實戰、解盤、AI 觀念、定石與死活。</p><a href="#register">了解與報名</a></div>
-          </article>
-          <article class="news-card">
-            <div class="news-photo photo-news-2" aria-label="週六朱老師指導棋活動照片"></div>
-            <div class="news-content"><span class="news-tag">固定活動</span><h3>週六朱老師指導棋</h3><p>實戰對局、重點複盤與 AI 觀念解析，適合級位與段位棋友。</p><a href="#events">查看活動</a></div>
-          </article>
-          <article class="news-card">
-            <div class="news-photo photo-news-3" aria-label="段位提升與比賽策略活動照片"></div>
-            <div class="news-content"><span class="news-tag">圍棋講座</span><h3>段位提升與比賽策略</h3><p>從布局方向、攻防選擇到時間管理，建立比賽實戰流程。</p><a href="#register">預約通知</a></div>
-          </article>
-        </div>
+        <div id="newsGrid" class="news-grid" aria-live="polite"></div>
       </div>
     </section>
 
@@ -293,7 +280,6 @@
       <div class="container">
         <div class="section-heading">
           <div><p class="section-label light">GALLERY</p><h2>教學現場與棋友活動</h2></div>
-          <p>將 gallery1.jpg～gallery4.jpg 上傳到 GitHub 根目錄，再於 data.js 修改檔名與標題，即可更新相簿。</p>
         </div>
         <div id="galleryGrid" class="gallery-grid" aria-live="polite"></div>
       </div>
@@ -438,7 +424,7 @@
     <div class="container copyright">© <span id="year"></span> 朱老師 AI 圍棋教學平台</div>
   </footer>
 
-  <script src="data.js?v=0119"></script>
-  <script src="script.js?v=0119"></script>
+  <script src="data.js?v=0120"></script>
+  <script src="script.js?v=0120"></script>
 </body>
 </html>
