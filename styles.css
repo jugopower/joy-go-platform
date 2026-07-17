@@ -1815,3 +1815,45 @@ body>footer .footer-grid p,body>footer .footer-grid a{overflow-wrap:normal!impor
     width:calc(100% - 32px)!important;
   }
 }
+
+/* ===== Build 011.9 — force original photo clarity ===== */
+/* Remove every full-photo tint from the news cards. */
+.photo-news-1{background-image:url("news1.jpg")!important}
+.photo-news-2{background-image:url("news2.jpg")!important}
+.photo-news-3{background-image:url("news3.jpg")!important}
+.news-photo{
+  filter:none!important;
+  opacity:1!important;
+  mix-blend-mode:normal!important;
+  background-color:#eef0eb!important;
+}
+.news-card::before,
+.news-card::after,
+.news-photo::before,
+.news-photo::after{
+  content:none!important;
+  display:none!important;
+  background:none!important;
+}
+
+/* Display gallery images without a full-card colour wash. */
+.gp1{background-image:url("gallery1.jpg")!important}
+.gp2{background-image:url("gallery2.jpg")!important}
+.gp3{background-image:url("gallery3.jpg")!important}
+.gp4{background-image:url("gallery4.jpg")!important}
+.gallery-photo{
+  filter:none!important;
+  opacity:1!important;
+  mix-blend-mode:normal!important;
+}
+.gallery-item::before{content:none!important;display:none!important}
+.gallery-item::after{
+  height:22%!important;
+  background:linear-gradient(to top,rgba(0,0,0,.28),rgba(0,0,0,0))!important;
+}
+
+/* Keep floating controls clear of card copy on iPad. */
+@media (min-width:721px) and (max-width:1280px){
+  .contact-fab{right:12px!important;bottom:22px!important}
+  .back-to-top{right:84px!important;bottom:23px!important}
+}
