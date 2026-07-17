@@ -1,25 +1,21 @@
-# Joy Go Platform Build 010.5
+# Joy Go Platform Build 010.6
 
-## 本次調整
-- 刪除照片上的 `teacher.jpg` 檔名字樣
-- iPad 橫式首頁照片移除模糊
-- 降低首頁照片深色遮罩
-- 保留「朱老師教學形象照」白色標題
-- 保留老師介紹頁右下標籤
-- 其他版面、課程篩選、選單、FAQ、聯絡功能維持不變
-- 網站版本更新為 Build 010.5
+本版本重點：
 
-## 上傳檔案
-請解壓縮後，上傳並覆蓋：
-- index.html
-- styles.css
-- script.js
-- README.md
-- render.yaml
-- .nojekyll
+- 套用使用者確認的首頁主視覺 `hero-main.png`
+- 刪除首頁主圖中的「預約體驗課程」「查看課程內容」按鈕區塊
+- 保留人物不變
+- 將「應昌期圍棋教育基金會講師」「野狐 9D」保留在較上方位置
+- 刪除「兒童・成人皆可」
+- 新增乾淨版首頁配置與可用的行動版選單
 
-Render 部署：
-Manual Deploy → Deploy latest commit
+## 檔案
 
-測試網址：
-https://joy-go-platform.onrender.com/?v=10.5
+- `index.html`：首頁主頁
+- `styles.css`：樣式
+- `script.js`：選單、分享、回到頁首互動
+- `hero-main.png`：首頁主視覺
+
+## 部署方式
+
+將本資料夾全部檔案上傳到 GitHub repo 根目錄，或直接部署到 Render static site。
