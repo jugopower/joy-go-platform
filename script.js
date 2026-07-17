@@ -68,3 +68,50 @@ shareButton?.addEventListener('click', async () => {
     console.log(error);
   }
 });
+
+// Build 010.7 registration and LINE sharing
+const registerForm = document.getElementById('registerForm');
+const copyRegister = document.getElementById('copyRegister');
+const lineRegister = document.getElementById('lineRegister');
+const smsRegister = document.getElementById('smsRegister');
+const registerStatus = document.getElementById('registerStatus');
+
+function buildRegisterMessage() {
+  const name = document.getElementById('regName')?.value.trim() || '';
+  const phone = document.getElementById('regPhone')?.value.trim() || '';
+  const level = document.getElementById('regLevel')?.value || '';
+  const course = document.getElementById('regCourse')?.value || '';
+  const note = document.getElementById('regNote')?.value.trim() || '無';
+  return `朱老師您好，我想洽詢圍棋課程。\n姓名：${name}\n電話：${phone}\n目前棋力：${level}\n課程需求：${course}\n其他需求：${note}`;
+}
+
+function validateRegister() {
+  if (!registerForm?.reportValidity()) return false;
+  return true;
+}
+
+copyRegister?.addEventListener('click', async () => {
+  if (!validateRegister()) return;
+  const text = buildRegisterMessage();
+  try {
+    await navigator.clipboard.writeText(text);
+    registerStatus.textContent = '報名內容已複製，可貼到 LINE 傳給朱老師。';
+  } catch {
+    registerStatus.textContent = text;
+  }
+});
+
+lineRegister?.addEventListener('click', (event) => {
+  event.preventDefault();
+  if (!validateRegister()) return;
+  const text = encodeURIComponent(buildRegisterMessage());
+  window.location.href = `https://line.me/R/msg/text/?${text}`;
+});
+
+smsRegister?.addEventListener('click', (event) => {
+  if (!validateRegister()) {
+    event.preventDefault();
+    return;
+  }
+  smsRegister.href = `sms:0931399910&body=${encodeURIComponent(buildRegisterMessage())}`;
+});
