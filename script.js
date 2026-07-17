@@ -332,3 +332,25 @@ LINE 顯示名稱：${lineName || "未填"}
     });
   });
 })();
+
+// Build 011 collapsible contact controls.
+(() => {
+  const toggle = document.getElementById('contactToggle');
+  const actions = document.getElementById('contactActions');
+  if (!toggle || !actions) return;
+  const close = () => {
+    actions.classList.remove('is-open');
+    actions.setAttribute('aria-hidden','true');
+    toggle.setAttribute('aria-expanded','false');
+  };
+  toggle.addEventListener('click',(event)=>{
+    event.stopPropagation();
+    const open = !actions.classList.contains('is-open');
+    actions.classList.toggle('is-open',open);
+    actions.setAttribute('aria-hidden',String(!open));
+    toggle.setAttribute('aria-expanded',String(open));
+  });
+  actions.addEventListener('click',(event)=>event.stopPropagation());
+  document.addEventListener('click',close);
+  document.addEventListener('keydown',(event)=>{ if(event.key==='Escape') close(); });
+})();

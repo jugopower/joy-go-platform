@@ -1381,3 +1381,46 @@ body{
     padding-bottom:100px!important;
   }
 }
+
+/* ===== Build 011 approved homepage ===== */
+.hero-image-section{background:#f7f2e9;padding:0}
+.hero-image-wrap{width:100%;overflow:hidden;background:#e8dcc9}
+.hero-image-wrap img{display:block;width:100%;height:auto;max-height:660px;object-fit:cover;object-position:center}
+.home-shortcuts{background:#faf7f1;padding:26px 0 34px;border-bottom:1px solid var(--line)}
+.shortcut-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.shortcut-card{display:grid;grid-template-columns:44px 1fr 18px;gap:14px;align-items:center;min-height:112px;padding:18px 20px;background:#e8ece8;border:1px solid rgba(18,59,46,.18);border-radius:16px;box-shadow:0 10px 24px rgba(15,45,34,.08);color:#153c2f}
+.shortcut-card:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(15,45,34,.12)}
+.shortcut-icon{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:#173f31;color:#fff;font-weight:900}
+.shortcut-gold .shortcut-icon{background:#b9893d}
+.shortcut-card strong{display:block;font-family:"Noto Serif TC",serif;font-size:22px;color:#12382c;margin-bottom:3px}
+.shortcut-card small{display:block;color:#40564c;font-size:13px;line-height:1.55}
+.shortcut-card b{font-size:28px;color:#9a6d27}
+.menu-button{display:flex!important;align-items:center;justify-content:center;gap:9px;width:auto!important;min-width:104px!important;height:56px!important;padding:10px 16px!important;border:1px solid rgba(18,59,46,.18)!important;border-radius:16px!important;background:#fff!important;box-shadow:0 8px 20px rgba(15,45,34,.08)!important}
+.menu-button span{width:29px!important;height:3px!important;margin:4px 0!important;border-radius:4px;background:#12382c!important}
+.menu-button em{font-size:16px!important;font-weight:900!important;color:#12382c!important}
+.contact-fab{position:fixed;right:22px;bottom:22px;z-index:180;display:flex;flex-direction:column;align-items:center;gap:10px}
+.contact-toggle,.contact-action{display:grid;place-items:center;width:70px;height:70px;border-radius:50%;font-weight:900;box-shadow:0 12px 30px rgba(0,0,0,.18)}
+.contact-toggle{border:0;background:#173f31;color:#fff;font-size:16px}
+.contact-actions{display:flex;flex-direction:column;gap:10px;opacity:0;visibility:hidden;transform:translateY(16px) scale(.94);transition:.22s ease}
+.contact-actions.is-open{opacity:1;visibility:visible;transform:none}
+.contact-action{width:62px;height:62px;background:#fff;color:#173f31;border:2px solid #173f31;font-size:14px}
+.contact-action.line{background:#19c85b;color:#fff;border-color:#19c85b}
+.contact-action.register{background:#c99b4e;color:#fff;border-color:#c99b4e}
+@media(max-width:920px){
+  .hero-image-wrap img{max-height:none;object-fit:contain}
+  .shortcut-grid{grid-template-columns:1fr 1fr 1fr;gap:12px}
+  .shortcut-card{grid-template-columns:40px 1fr;min-height:96px;padding:14px}
+  .shortcut-card b{display:none}
+  .shortcut-card strong{font-size:19px}
+  .shortcut-card small{font-size:12px}
+}
+@media(max-width:620px){
+  .shortcut-grid{grid-template-columns:1fr;gap:10px}
+  .shortcut-card{min-height:82px}
+  .menu-button{min-width:92px!important;height:52px!important;padding:8px 13px!important}
+  .menu-button span{width:26px!important}
+  .menu-button em{font-size:15px!important}
+  .contact-fab{right:14px;bottom:18px}
+  .contact-toggle{width:64px;height:64px}
+  .contact-action{width:56px;height:56px}
+}
