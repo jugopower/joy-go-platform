@@ -1938,3 +1938,35 @@ body.drawer-open .share-float{
   visibility:hidden!important;
   pointer-events:none!important;
 }
+
+/* Build 012.3 — 暑假段位集訓班 DM 專區 */
+.summer-camp-section{
+  background:linear-gradient(135deg,#f8f1df 0%,#fffaf0 52%,#eef3ec 100%);
+  overflow:hidden;
+}
+.summer-camp-grid{
+  display:grid;
+  grid-template-columns:minmax(0,.85fr) minmax(360px,.65fr);
+  gap:clamp(34px,5vw,76px);
+  align-items:center;
+}
+.summer-camp-copy h2{margin:.35rem 0 1.1rem;font-size:clamp(2.2rem,4vw,4.7rem);line-height:1.08}
+.summer-camp-lead{font-size:clamp(1rem,1.45vw,1.28rem);line-height:1.9;color:var(--muted);max-width:760px}
+.summer-camp-points{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0}
+.summer-camp-points span{padding:10px 14px;border-radius:999px;background:#fff;border:1px solid rgba(23,52,40,.14);font-weight:700;color:var(--green)}
+.summer-camp-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px}
+.summer-camp-note{margin-top:18px;color:var(--muted);font-size:.95rem}
+.summer-dm-card{display:block;width:100%;padding:0;border:0;border-radius:26px;background:#fff;overflow:hidden;box-shadow:0 28px 70px rgba(39,57,42,.2);cursor:zoom-in;text-align:center;transition:transform .25s ease,box-shadow .25s ease}
+.summer-dm-card:hover{transform:translateY(-5px);box-shadow:0 34px 80px rgba(39,57,42,.26)}
+.summer-dm-card img{display:block;width:100%;height:auto;filter:none!important;opacity:1!important}
+.summer-dm-card span{display:block;padding:14px 18px;background:#173428;color:#fff;font-weight:800;letter-spacing:.03em}
+@media (max-width:900px){
+  .summer-camp-grid{grid-template-columns:1fr;gap:28px}
+  .summer-dm-card{max-width:680px;margin-inline:auto}
+}
+@media (max-width:600px){
+  .summer-camp-section{padding-top:54px;padding-bottom:54px}
+  .summer-camp-copy h2{font-size:2.25rem}
+  .summer-camp-actions .button{width:100%;justify-content:center}
+  .summer-dm-card{border-radius:18px}
+}
