@@ -1886,3 +1886,55 @@ body>footer .footer-grid p,body>footer .footer-grid a{overflow-wrap:normal!impor
 .online-actions{display:flex;gap:12px;flex-wrap:wrap}.online-phone{display:inline-flex;align-items:center;justify-content:center;border:1px solid #173b2c;color:#173b2c!important;background:transparent;border-radius:999px;padding:14px 22px;font-weight:700;text-decoration:none}
 @media(max-width:980px){.online-grid{grid-template-columns:1fr;gap:34px}.online-visual{max-width:700px;margin:auto}.online-feature-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:680px){.online-grid{gap:26px}.meet-stage{grid-template-columns:1fr;min-height:auto}.meet-teacher{min-height:160px}.meet-board{min-height:250px}.online-copy h2{font-size:38px}.online-feature-grid{grid-template-columns:1fr}.online-actions{flex-direction:column}.online-actions a{width:100%;text-align:center}.meet-bottom{flex-wrap:wrap}}
+
+
+/* ===== Build 012.2 — iPad portrait drawer + online lesson entries ===== */
+@media (min-width: 721px) and (max-width: 1280px) and (orientation: portrait){
+  .mobile-drawer{
+    display:flex!important;
+    flex-direction:column!important;
+    position:fixed!important;
+    top:0!important;
+    right:0!important;
+    bottom:auto!important;
+    width:min(58vw,600px)!important;
+    max-width:600px!important;
+    height:100dvh!important;
+    max-height:100dvh!important;
+    overflow-y:auto!important;
+    overscroll-behavior:contain!important;
+    padding-bottom:calc(22px + env(safe-area-inset-bottom))!important;
+    z-index:10002!important;
+  }
+  .drawer-backdrop{
+    position:fixed!important;
+    inset:0!important;
+    width:100vw!important;
+    height:100dvh!important;
+    z-index:10001!important;
+  }
+  .drawer-nav{
+    flex:0 0 auto!important;
+    overflow:visible!important;
+  }
+  .drawer-contact{
+    margin-top:auto!important;
+    position:relative!important;
+    left:auto!important;
+    right:auto!important;
+    bottom:auto!important;
+    flex:0 0 auto!important;
+  }
+}
+body.drawer-open{
+  overflow:hidden!important;
+  touch-action:none!important;
+}
+body.drawer-open .contact-fab,
+body.drawer-open .back-to-top,
+body.drawer-open .floating-contact,
+body.drawer-open .share-float{
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
