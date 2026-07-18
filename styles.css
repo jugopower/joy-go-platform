@@ -1857,3 +1857,32 @@ body>footer .footer-grid p,body>footer .footer-grid a{overflow-wrap:normal!impor
   .contact-fab{right:12px!important;bottom:22px!important}
   .back-to-top{right:84px!important;bottom:23px!important}
 }
+
+
+/* ===== Build 012.1 — Google Meet online lessons ===== */
+.online-section{background:linear-gradient(135deg,#f7f2e6 0%,#fff 55%,#edf3ee 100%);overflow:hidden}
+.online-grid{display:grid;grid-template-columns:minmax(340px,.95fr) minmax(430px,1.05fr);gap:56px;align-items:center}
+.online-visual{position:relative}
+.online-visual::before{content:"";position:absolute;inset:-28px 18% 18% -28px;border-radius:36px;background:#173b2c;opacity:.08;transform:rotate(-4deg)}
+.meet-window{position:relative;border-radius:28px;overflow:hidden;background:#18221d;box-shadow:0 28px 65px rgba(18,50,37,.25);border:1px solid rgba(255,255,255,.35)}
+.meet-toolbar{height:54px;display:flex;align-items:center;gap:8px;padding:0 18px;background:#fff;color:#173428}
+.meet-toolbar span{width:11px;height:11px;border-radius:50%;background:#d8b05d}.meet-toolbar span:nth-child(2){background:#86a992}.meet-toolbar span:nth-child(3){background:#a6a6a6}
+.meet-toolbar b{margin-left:auto;font-size:14px;letter-spacing:.04em}
+.meet-stage{display:grid;grid-template-columns:.8fr 1.2fr;gap:14px;padding:18px;min-height:330px}
+.meet-teacher{border-radius:20px;background:linear-gradient(145deg,#315a45,#18392a);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:24px}
+.teacher-avatar{width:92px;height:92px;border-radius:50%;display:grid;place-items:center;background:#d1a647;color:#173428;font:900 42px/1 "Noto Serif TC",serif;margin-bottom:16px;border:5px solid rgba(255,255,255,.65)}
+.meet-teacher strong{font-size:24px}.meet-teacher small{margin-top:8px;color:#dfe9e2}
+.meet-board{position:relative;border-radius:20px;overflow:hidden;background-color:#d8b46b;background-image:linear-gradient(#6c4f25 1px,transparent 1px),linear-gradient(90deg,#6c4f25 1px,transparent 1px);background-size:12.5% 12.5%;background-position:6.25% 6.25%;min-height:290px;box-shadow:inset 0 0 0 12px #c5984f}
+.meet-board i{position:absolute;width:7px;height:7px;border-radius:50%;background:#5c411f}.meet-board i:nth-child(1){left:25%;top:25%}.meet-board i:nth-child(2){left:50%;top:25%}.meet-board i:nth-child(3){left:75%;top:25%}.meet-board i:nth-child(4){left:25%;top:50%}.meet-board i:nth-child(5){left:50%;top:50%}.meet-board i:nth-child(6){left:75%;top:50%}.meet-board i:nth-child(7){left:25%;top:75%}.meet-board i:nth-child(8){left:50%;top:75%}.meet-board i:nth-child(9){left:75%;top:75%}
+.stone{position:absolute;width:28px;height:28px;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 4px 8px rgba(0,0,0,.35)}.stone.black{background:radial-gradient(circle at 35% 30%,#4b4b4b,#050505 70%)}.stone.white{background:radial-gradient(circle at 35% 30%,#fff,#cfcfcf 75%)}.s1{left:37.5%;top:37.5%}.s2{left:50%;top:37.5%}.s3{left:62.5%;top:50%}.s4{left:50%;top:62.5%}
+.meet-bottom{display:flex;gap:10px;justify-content:center;padding:0 18px 18px}.meet-bottom span{background:#2d4136;color:#fff;border-radius:999px;padding:9px 14px;font-size:13px}
+.online-copy h2{font-size:clamp(36px,4.5vw,62px);line-height:1.12;margin:10px 0 20px;color:#163c2c}
+.online-lead{font-size:18px;line-height:1.9;color:#405348;margin-bottom:26px}
+.online-feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px}
+.online-feature-grid article{background:#fff;border:1px solid rgba(23,60,44,.12);border-radius:18px;padding:18px;box-shadow:0 10px 30px rgba(23,60,44,.07)}
+.online-feature-grid article>span{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#e8d5a1;color:#173b2c;font-weight:900;margin-bottom:10px}
+.online-feature-grid h3{margin:0 0 8px;font-size:18px;color:#173b2c}.online-feature-grid p{margin:0;color:#5c6962;line-height:1.65;font-size:14px}
+.online-steps{list-style:none;padding:0;margin:0 0 26px;display:grid;gap:12px}.online-steps li{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid rgba(23,60,44,.12)}.online-steps li>b{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#173b2c;color:#fff}.online-steps span{display:flex;flex-direction:column}.online-steps strong{color:#173b2c}.online-steps small{margin-top:3px;color:#6b766f;font-size:14px}
+.online-actions{display:flex;gap:12px;flex-wrap:wrap}.online-phone{display:inline-flex;align-items:center;justify-content:center;border:1px solid #173b2c;color:#173b2c!important;background:transparent;border-radius:999px;padding:14px 22px;font-weight:700;text-decoration:none}
+@media(max-width:980px){.online-grid{grid-template-columns:1fr;gap:34px}.online-visual{max-width:700px;margin:auto}.online-feature-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:680px){.online-grid{gap:26px}.meet-stage{grid-template-columns:1fr;min-height:auto}.meet-teacher{min-height:160px}.meet-board{min-height:250px}.online-copy h2{font-size:38px}.online-feature-grid{grid-template-columns:1fr}.online-actions{flex-direction:column}.online-actions a{width:100%;text-align:center}.meet-bottom{flex-wrap:wrap}}
